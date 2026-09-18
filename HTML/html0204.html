@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML-2 Semantic Elements</title>
+  </head>
+
+  <body>
+    <!--
+    ==================================================
+    HTML-2 04 : Page Structure / Semantic Elements
+    ==================================================
+
+    [핵심 생각]
+
+    Semantic Element
+    = 이 부분이 "무슨 역할인지" 의미를 가진 태그
+
+    이번 파일 핵심:
+
+    header
+    -> 머리말 영역
+
+    nav
+    -> 주요 탐색 링크 영역
+
+    section
+    -> 문서의 한 주제/구역
+
+    article
+    -> 독립적으로 사용할 수 있는 하나의 콘텐츠
+
+    aside
+    -> 본문과 관련 있지만 흐름에서 조금 벗어난 보조 내용
+
+    figure
+    -> 이미지, 표, 차트 등의 독립적인 자료
+
+    figcaption
+    -> figure의 설명
+
+    footer
+    -> 하단 정보
+
+    time
+    -> 날짜/시간에 의미를 부여
+
+    시험 중요도:
+
+    ★★★ header / nav / section / article
+    ★★★ aside / footer
+    ★★  figure / figcaption
+    ★   time
+    -->
+
+    <!--
+    ==================================================
+    1. header
+    ==================================================
+
+    페이지 또는 특정 콘텐츠의 머리말 영역.
+
+    제목, 이미지, 로고, navigation 등이 들어갈 수 있다.
+
+    header는 한 페이지에 한 번만 쓰는 것이 아니라
+    여러 번 사용할 수도 있다.
+    -->
+
+    <header>
+      <h1>웹응용프로그래밍 학습 페이지</h1>
+
+      <p>HTML5 Semantic Elements 실습</p>
+
+      <!--
+        ==================================================
+        2. nav
+        ==================================================
+
+        navigation link들을 하나로 묶는 영역.
+
+        페이지의 주요 메뉴,
+        다른 페이지나 다른 영역으로 이동하는 링크 등에 사용.
+        -->
+
+      <nav>
+        <a href="#html">HTML</a>
+        |
+        <a href="#css">CSS</a>
+        |
+        <a href="#javascript">JavaScript</a>
+      </nav>
+    </header>
+
+    <hr />
+
+    <!--
+    ==================================================
+    3. section
+    ==================================================
+
+    문서의 특정 주제/구역을 표현.
+
+    보통 section마다 제목을 함께 사용한다.
+
+    section 안에 article이 들어갈 수도 있고,
+    article 안에 section이 들어갈 수도 있다.
+    -->
+
+    <section id="html">
+      <h2>HTML</h2>
+
+      <!--
+        ==================================================
+        4. article
+        ==================================================
+
+        독립적으로 사용하거나 다른 곳에 배포해도
+        의미가 성립하는 하나의 콘텐츠.
+
+        예:
+        뉴스 기사
+        블로그 글
+        게시글
+        포럼 글
+        -->
+
+      <article>
+        <!--
+            article 안에도 header를 사용할 수 있다.
+
+            즉 header는
+            "웹사이트 맨 위에서 딱 한 번"
+            사용해야 하는 태그가 아니다.
+            -->
+
+        <header>
+          <h3>HTML이란?</h3>
+
+          <p>
+            작성일:
+            <time datetime="2026-09-18"> 2026년 9월 18일 </time>
+          </p>
+        </header>
+
+        <p>HTML은 웹 문서의 구조와 내용을 표현하는 마크업 언어입니다.</p>
+
+        <p>
+          HTML5에서는 header, nav, section, article 등의 semantic element를
+          이용하여 각 영역의 의미를 나타낼 수 있습니다.
+        </p>
+
+        <!--
+            ==================================================
+            5. aside
+            ==================================================
+
+            현재 내용과 관련되어 있지만
+            본문의 핵심 흐름에서는 조금 벗어난 보조 정보.
+
+            예:
+            참고 내용
+            관련 정보
+            배경 설명
+            사이드 정보
+            -->
+
+        <aside>
+          <h4>참고</h4>
+
+          <p>
+            HTML은 화면의 구조를 담당하고, 디자인은 주로 CSS에서 처리합니다.
+          </p>
+        </aside>
+
+        <!--
+            ==================================================
+            6. figure / figcaption
+            ==================================================
+
+            figure
+            = 이미지, 표, 차트 같은 독립적인 자료
+
+            figcaption
+            = 그 자료의 설명
+
+            여기서는 외부 이미지 파일 없이
+            Live Server에서 바로 확인하기 위해
+            표를 figure 안에 넣었다.
+            -->
+
+        <figure>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>기술</th>
+                <th>역할</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>HTML</td>
+                <td>구조</td>
+              </tr>
+
+              <tr>
+                <td>CSS</td>
+                <td>스타일</td>
+              </tr>
+
+              <tr>
+                <td>JavaScript</td>
+                <td>동작</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <figcaption>웹 프론트엔드 기술의 기본 역할</figcaption>
+        </figure>
+
+        <!--
+            article 자체의 하단에도 footer 사용 가능
+            -->
+
+        <footer>
+          <p>작성자: HTML 학습자</p>
+        </footer>
+      </article>
+    </section>
+
+    <hr />
+
+    <section id="css">
+      <h2>CSS</h2>
+
+      <article>
+        <h3>CSS의 역할</h3>
+
+        <p>CSS는 웹페이지의 모양과 스타일을 담당합니다.</p>
+
+        <aside>HTML과 CSS는 역할이 다릅니다.</aside>
+      </article>
+    </section>
+
+    <hr />
+
+    <section id="javascript">
+      <h2>JavaScript</h2>
+
+      <article>
+        <h3>JavaScript의 역할</h3>
+
+        <p>JavaScript는 웹페이지의 동작을 구현할 때 사용합니다.</p>
+      </article>
+    </section>
+
+    <hr />
+
+    <!--
+    ==================================================
+    7. footer
+    ==================================================
+
+    페이지 또는 특정 section/article의 하단 정보.
+
+    예:
+    저작권
+    작성자
+    연락처
+    관련 링크
+
+    footer도 페이지 전체에서 한 번만 사용해야 하는 것은 아니다.
+    -->
+
+    <footer>
+      <p>Copyright 2026 Web Application Programming</p>
+
+      <p>Contact: student@example.com</p>
+    </footer>
+  </body>
+</html>

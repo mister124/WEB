@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML-1 Form</title>
+  </head>
+
+  <body>
+    <!--
+    ==================================================
+    HTML-1 04 : FORM
+    ==================================================
+
+    form
+    -> 사용자의 정보를 입력받아
+       서버로 전송하기 위한 영역
+
+    action
+    -> 어디로 보낼 것인가?
+
+    method
+    -> 어떻게 보낼 것인가?
+
+
+    GET
+    ----------------------------------
+    데이터를 URL의 ? 뒤
+    query string에 포함.
+
+    예:
+    ?username=park&grade=2
+
+    검색/조회 같은 작업에 적합.
+
+
+    POST
+    ----------------------------------
+    데이터를 HTTP request body에 포함.
+
+    주소창에는 데이터가 직접 나타나지 않지만
+    "비밀"이라는 의미는 아니다.
+
+    전송 중 보호는 HTTPS와 관련.
+    -->
+
+    <h1>Form 실습</h1>
+
+    <form method="get" action="server.php">
+      <!--
+        ==================================================
+        hidden input
+        ==================================================
+
+        화면에는 보이지 않지만
+        form 제출 시 데이터로 함께 전송.
+
+        개발자 도구에서는 볼 수 있으므로
+        비밀 데이터를 저장하는 용도가 아니다.
+        -->
+
+      <input type="hidden" name="from" value="main-page" />
+
+      <!--
+        ==================================================
+        text input
+        ==================================================
+
+        일반 텍스트 입력
+
+        name
+        -> 서버로 전송할 데이터 이름
+
+        value
+        -> 초기 입력값
+
+        size
+        -> 화면에 보이는 입력창 크기
+
+        maxlength
+        -> 최대 입력 문자 수
+        -->
+
+      <p>
+        <label for="username"> Name: </label>
+
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="hi"
+          size="20"
+          maxlength="10"
+        />
+      </p>
+
+      <!--
+        ==================================================
+        password
+        ==================================================
+
+        입력한 문자가 화면에서 가려진다.
+
+        실제 값 자체가 암호화되어 있다는 뜻은 아님.
+        -->
+
+      <p>
+        <label for="password"> Password: </label>
+
+        <input type="password" id="password" name="password" />
+      </p>
+
+      <!--
+        ==================================================
+        textarea
+        ==================================================
+
+        여러 줄의 텍스트 입력.
+
+        rows
+        -> 행 수
+
+        cols
+        -> 열 크기
+
+        textarea는 기본값을 value 속성이 아니라
+        시작/종료 태그 사이에 작성.
+        -->
+
+      <p>
+        <label for="comment"> Comment: </label>
+
+        <textarea id="comment" name="comment" rows="5" cols="30">
+기본 내용</textarea
+        >
+      </p>
+
+      <!--
+        ==================================================
+        checkbox
+        ==================================================
+
+        여러 개 선택 가능.
+
+        같은 종류의 데이터라면
+        같은 name을 사용할 수 있고,
+        value로 실제 선택값을 구분.
+        -->
+
+      <p>관심 언어:</p>
+
+      <label for="html">
+        <input type="checkbox" id="html" name="language" value="html" />
+        HTML
+      </label>
+
+      <label for="css">
+        <input type="checkbox" id="css" name="language" value="css" />
+        CSS
+      </label>
+
+      <!--
+        ==================================================
+        radio
+        ==================================================
+
+        한 그룹에서 하나만 선택.
+
+        ★ 중요 ★
+
+        같은 그룹의 radio는
+        같은 name을 사용한다.
+
+        각각의 선택지는
+        서로 다른 value를 가진다.
+        -->
+
+      <p>학년:</p>
+
+      <label for="grade1">
+        <input type="radio" id="grade1" name="grade" value="1" />
+
+        1학년
+      </label>
+
+      <label for="grade2">
+        <input type="radio" id="grade2" name="grade" value="2" />
+
+        2학년
+      </label>
+
+      <!--
+        ==================================================
+        select / option
+        ==================================================
+
+        select
+        -> 선택 목록 전체
+
+        option
+        -> 각각의 선택지
+
+        selected
+        -> 처음 선택된 option
+        -->
+
+      <p>
+        <label for="schoolYear"> 학년 선택: </label>
+
+        <select id="schoolYear" name="schoolYear">
+          <option value="1">1학년</option>
+
+          <option value="2" selected>2학년</option>
+
+          <option value="3">3학년</option>
+        </select>
+      </p>
+
+      <!--
+        ==================================================
+        submit / reset
+        ==================================================
+
+        submit
+        -> form 데이터를 전송
+
+        reset
+        -> 입력 요소를 초기 상태로 복원
+        -->
+
+      <input type="submit" value="제출" />
+
+      <input type="reset" value="초기화" />
+    </form>
+  </body>
+</html>

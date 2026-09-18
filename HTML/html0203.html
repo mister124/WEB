@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML-2 Autocomplete Datalist Fieldset</title>
+  </head>
+
+  <body>
+    <!--
+    ==================================================
+    HTML-2 03
+    autocomplete / datalist / fieldset / legend
+    ==================================================
+
+    [이번 파일 핵심]
+
+    1. autocomplete
+       -> 브라우저 자동완성 기능
+
+    2. datalist
+       -> input에 미리 준비된 추천 선택지 제공
+       -> select와 달리 직접 입력도 가능
+
+    3. fieldset
+       -> 관련된 form 요소를 하나의 그룹으로 묶음
+
+    4. legend
+       -> fieldset 그룹의 제목
+
+    시험 중요도:
+
+    ★★★ datalist
+    ★★  fieldset + legend
+    ★   autocomplete
+    -->
+
+    <h1>HTML-2 입력 편의 기능</h1>
+
+    <!--
+    ==================================================
+    1. autocomplete
+    ==================================================
+
+    autocomplete
+    = 브라우저가 이전에 저장한 정보를 바탕으로
+      입력값을 자동완성하도록 도와주는 기능
+
+    자주 보는 형태:
+
+    autocomplete="on"
+    autocomplete="off"
+
+    또는 데이터 종류를 직접 지정:
+
+    autocomplete="name"
+    autocomplete="email"
+    autocomplete="username"
+
+    이번 시험 대비에서는
+    "자동완성 기능"이라는 개념과 문법을 우선 기억.
+    -->
+
+    <h2>1. autocomplete</h2>
+
+    <form autocomplete="on">
+      <p>
+        <label for="userName"> 이름: </label>
+
+        <input type="text" id="userName" name="userName" autocomplete="name" />
+      </p>
+
+      <p>
+        <label for="userEmail"> 이메일: </label>
+
+        <input
+          type="email"
+          id="userEmail"
+          name="userEmail"
+          autocomplete="email"
+        />
+      </p>
+    </form>
+
+    <hr />
+
+    <!--
+    ==================================================
+    2. datalist
+    ==================================================
+
+    datalist
+    = input에 추천 선택지를 제공
+
+    핵심 연결:
+
+    input의 list 값
+    =
+    datalist의 id 값
+
+    예:
+
+    <input list="majorList">
+
+    <datalist id="majorList">
+        ...
+    </datalist>
+
+    반드시 기억:
+
+    list="majorList"
+            ↕
+    id="majorList"
+
+
+    select와 차이:
+
+    select
+    -> 준비된 option 중에서 선택
+
+    datalist
+    -> 추천 option도 보여주고
+       사용자가 직접 다른 값을 입력할 수도 있음
+    -->
+
+    <h2>2. datalist</h2>
+
+    <p>
+      <label for="major"> 전공: </label>
+
+      <input
+        type="text"
+        id="major"
+        name="major"
+        list="majorList"
+        placeholder="전공 입력 또는 선택"
+      />
+
+      <datalist id="majorList">
+        <option value="컴퓨터공학"></option>
+        <option value="전기공학"></option>
+        <option value="전자공학"></option>
+        <option value="기계공학"></option>
+        <option value="산업공학"></option>
+      </datalist>
+    </p>
+
+    <p>
+      <label for="language"> 좋아하는 프로그래밍 언어: </label>
+
+      <input type="text" id="language" name="language" list="languageList" />
+
+      <datalist id="languageList">
+        <option value="C"></option>
+        <option value="C++"></option>
+        <option value="Java"></option>
+        <option value="Python"></option>
+        <option value="JavaScript"></option>
+      </datalist>
+    </p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    3. fieldset / legend
+    ==================================================
+
+    fieldset
+    = 관련된 form 입력 요소들을 하나로 묶음
+
+    브라우저에서는 보통
+    주변에 사각형 테두리가 생긴다.
+
+    legend
+    = fieldset의 제목
+
+    구조:
+
+    <fieldset>
+
+        <legend>제목</legend>
+
+        입력요소들...
+
+    </fieldset>
+    -->
+
+    <h2>3. fieldset / legend</h2>
+
+    <form>
+      <fieldset>
+        <legend>개인정보</legend>
+
+        <p>
+          <label for="name"> 이름: </label>
+
+          <input type="text" id="name" name="name" required />
+        </p>
+
+        <p>
+          <label for="birth"> 생년월일: </label>
+
+          <input type="date" id="birth" name="birth" required />
+        </p>
+
+        <p>
+          <label for="email"> 이메일: </label>
+
+          <input type="email" id="email" name="email" required />
+        </p>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>과제 정보</legend>
+
+        <p>
+          <label for="subject"> 과목명: </label>
+
+          <input type="text" id="subject" name="subject" required />
+        </p>
+
+        <p>
+          <label for="assignment"> 과제명: </label>
+
+          <input type="text" id="assignment" name="assignment" required />
+        </p>
+
+        <p>
+          <label for="deadline"> 제출 기한: </label>
+
+          <input type="date" id="deadline" name="deadline" required />
+        </p>
+      </fieldset>
+
+      <br />
+
+      <input type="submit" value="제출" />
+
+      <input type="reset" value="초기화" />
+    </form>
+  </body>
+</html>

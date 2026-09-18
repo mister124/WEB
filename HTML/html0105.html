@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML-1 Button and Internal Link</title>
+  </head>
+
+  <body>
+    <!--
+    ==================================================
+    HTML-1 05 : Button / Internal Linking
+    ==================================================
+    -->
+
+    <!--
+    ==================================================
+    1. button
+    ==================================================
+    -->
+
+    <h1>Button</h1>
+
+    <button type="button">버튼</button>
+
+    <input type="button" value="버튼" />
+
+    <!--
+    ==================================================
+    2. Internal Linking
+    ==================================================
+
+    같은 HTML 문서 안의 특정 위치로 이동.
+
+    이동할 요소:
+    id="database"
+
+    링크:
+    href="#database"
+
+    ★ 핵심 ★
+
+    href의 # 뒤 값
+    =
+    이동 대상의 id
+    -->
+
+    <h1>Internal Linking</h1>
+
+    <a href="#database"> Database로 이동 </a>
+
+    <!--
+    페이지를 길게 만들어
+    이동을 직접 확인하기 위한 내용
+    -->
+
+    <p>내용 1</p>
+    <p>내용 2</p>
+    <p>내용 3</p>
+    <p>내용 4</p>
+    <p>내용 5</p>
+    <p>내용 6</p>
+    <p>내용 7</p>
+    <p>내용 8</p>
+    <p>내용 9</p>
+    <p>내용 10</p>
+    <p>내용 11</p>
+    <p>내용 12</p>
+
+    <h2 id="database">Database</h2>
+
+    <p>Database 영역입니다.</p>
+
+    <a href="#"> 맨 위로 이동 </a>
+  </body>
+</html>
