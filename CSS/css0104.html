@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 04 - Cascade, Inheritance, Specificity</title>
+
+    <style>
+      /*
+        ==================================================
+        CSS-1 04
+        Cascade / Inheritance / Specificity
+        ==================================================
+
+        이번 핵심:
+
+        1. Cascade
+           여러 CSS 규칙 중 최종 스타일 결정
+
+        2. Inheritance
+           부모의 일부 속성이 자식에게 전달
+
+        3. Specificity
+           여러 selector가 같은 요소를 직접 선택할 때
+           더 구체적인 selector가 우선
+
+        기본 우선순위:
+
+        ID selector
+        > class selector
+        > element selector
+
+        같은 specificity라면
+        나중에 작성된 규칙이 적용된다.
+        */
+
+      /*
+        ==================================================
+        1. Inheritance
+        ==================================================
+
+        body는 아래 요소들의 부모(ancestor).
+
+        color와 font-family는
+        자식 요소에게 상속되는 대표적인 속성.
+
+        border와 margin은 상속되지 않는다.
+        */
+
+      body {
+        color: blue;
+        font-family: Arial, sans-serif;
+
+        border: 3px solid black;
+        margin: 30px;
+      }
+
+      /*
+        ==================================================
+        2. 직접 지정된 값 vs 상속된 값
+        ==================================================
+
+        p는 body에서 color: blue를 상속받을 수 있지만,
+
+        아래처럼 p 자신에게 color를 직접 지정하면
+        직접 지정된 red가 사용된다.
+        */
+
+      .direct-color {
+        color: red;
+      }
+
+      /*
+        ==================================================
+        3. Specificity
+        ==================================================
+
+        아래 세 규칙은
+        같은 p 요소를 동시에 선택할 수 있다.
+
+        p
+        -> element selector
+
+        .special
+        -> class selector
+
+        #target
+        -> id selector
+
+        우선순위:
+
+        #target
+        > .special
+        > p
+        */
+
+      p {
+        color: blue;
+      }
+
+      /* .special {
+        color: purple;
+      } */
+
+      /* #target {
+        color: green;
+      } */
+
+      /*
+        ==================================================
+        4. 복합 selector의 specificity
+        ==================================================
+
+        강의자료 예:
+
+        #box p
+        > .intro p
+        > p
+
+        이유:
+
+        #box p
+        -> ID 1개 + element 1개
+
+        .intro p
+        -> class 1개 + element 1개
+
+        p
+        -> element 1개
+        */
+
+      p {
+        background-color: lightgray;
+      }
+
+      .intro p {
+        background-color: lightyellow;
+      }
+
+      #box p {
+        background-color: lightblue;
+      }
+
+      /*
+        ==================================================
+        5. specificity가 같다면?
+        ==================================================
+
+        아래 두 selector는 완전히 같은 specificity.
+
+        같은 경우에는
+        나중에 작성된 규칙이 이긴다.
+
+        따라서 final-rule은 orange.
+        */
+
+      .final-rule {
+        color: red;
+      }
+
+      .final-rule {
+        color: orange;
+      }
+
+      /*
+        ==================================================
+        6. text-decoration
+        ==================================================
+
+        text-decoration
+        -> 글자에 장식선 추가
+
+        underline
+        -> 밑줄
+
+        overline
+        -> 윗줄
+
+        line-through
+        -> 취소선
+        */
+
+      .underline {
+        text-decoration: underline;
+      }
+
+      .overline {
+        text-decoration: overline;
+      }
+
+      .line-through {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Cascade / Inheritance / Specificity</h1>
+
+    <!--
+    ==================================================
+    Inheritance 확인
+    ==================================================
+
+    h2에는 color를 직접 지정하지 않았다.
+
+    하지만 body의 color: blue와
+    font-family가 상속된다.
+
+    반면 body의 border가
+    h2 각각에 생기지는 않는다.
+    -->
+
+    <h2>1. Inheritance</h2>
+
+    <p>이 문장은 부모인 body의 스타일 영향을 받습니다.</p>
+
+    <!--
+    부모에게서 blue를 상속받을 수 있지만,
+    자신에게 red가 직접 지정됨.
+    -->
+
+    <p class="direct-color">이 문장은 color가 직접 red로 지정되었습니다.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    Specificity 확인
+    ==================================================
+
+    아래 p 하나에는 동시에:
+
+    p selector
+    .special selector
+    #target selector
+
+    세 규칙이 모두 적용될 수 있다.
+
+    가장 구체적인 #target이 승리한다.
+    -->
+
+    <h2>2. Specificity</h2>
+
+    <p id="target" class="special">이 문장의 최종 글자색을 확인하세요.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    복합 selector 비교
+    ==================================================
+    -->
+
+    <h2>3. 복합 Selector</h2>
+
+    <div id="box" class="intro">
+      <p>이 문장의 배경색을 확인하세요.</p>
+    </div>
+
+    <hr />
+
+    <!--
+    ==================================================
+    같은 specificity
+    ==================================================
+
+    .final-rule 규칙이 두 번 있음.
+
+    둘의 specificity가 같으므로
+    나중에 작성된 orange가 적용된다.
+    -->
+
+    <h2>4. 같은 Specificity</h2>
+
+    <p class="final-rule">이 문장의 최종 글자색은 무엇일까요?</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    text-decoration
+    ==================================================
+    -->
+
+    <h2>5. text-decoration</h2>
+
+    <p class="underline">underline</p>
+
+    <p class="overline">overline</p>
+
+    <p class="line-through">line-through</p>
+  </body>
+</html>

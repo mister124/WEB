@@ -1,0 +1,72 @@
+/*
+==================================================
+CSS-1 03 : External Style Sheet
+==================================================
+
+이 파일에는 HTML 태그가 들어가지 않는다.
+
+CSS rule만 작성한다.
+
+기본 구조:
+
+selector {
+    property: value;
+}
+*/
+
+/*
+모든 body의 기본 글꼴
+*/
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/*
+Element Selector
+*/
+
+h1 {
+  color: navy;
+  font-size: 40px;
+}
+
+h2 {
+  color: darkgreen;
+}
+
+p {
+  color: green;
+  font-size: 25px;
+}
+
+/*
+Class Selector
+
+HTML:
+class="special"
+
+CSS:
+.special
+*/
+
+.special {
+  color: orange;
+  font-weight: bold;
+}
+
+/*
+ID Selector
+
+HTML:
+id="notice"
+
+CSS:
+#notice
+*/
+
+#notice {
+  color: red;
+  font-size: 22px;
+  font-weight: bold;
+}

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 06 - Position and z-index</title>
+
+    <style>
+      /*
+        ==================================================
+        CSS-1 06
+        position / absolute / fixed / sticky / z-index
+        ==================================================
+
+        position 대표 값:
+
+        static
+        relative
+        absolute
+        fixed
+        sticky
+        */
+
+      /*
+        ==================================================
+        1. static
+        ==================================================
+
+        static
+        -> 기본값
+        -> normal flow에 따라 배치
+        */
+
+      .static-box {
+        position: static;
+
+        width: 200px;
+        height: 60px;
+
+        background-color: lightgray;
+      }
+
+      /*
+        ==================================================
+        2. relative
+        ==================================================
+
+        relative
+        -> 원래 위치를 기준으로 이동
+
+        top
+        left
+        right
+        bottom 사용 가능
+        */
+
+      .relative-box {
+        position: relative;
+
+        top: 20px;
+        left: 40px;
+
+        width: 200px;
+        height: 60px;
+
+        background-color: lightblue;
+      }
+
+      /*
+        ==================================================
+        3. absolute
+        ==================================================
+
+        absolute
+        -> normal flow에서 빠짐
+
+        가장 가까운 positioned ancestor를 기준으로 위치함.
+
+        그래서 부모에:
+
+        position: relative;
+
+        를 주는 경우가 많다.
+        */
+
+      .absolute-parent {
+        position: relative;
+
+        width: 500px;
+        height: 200px;
+
+        border: 3px solid black;
+      }
+
+      .absolute-child {
+        position: absolute;
+
+        top: 30px;
+        right: 30px;
+
+        width: 150px;
+        height: 60px;
+
+        background-color: lightgreen;
+      }
+
+      /*
+        ==================================================
+        4. fixed
+        ==================================================
+
+        fixed
+        -> viewport 기준
+        -> 스크롤해도 같은 화면 위치에 유지
+        */
+
+      .fixed-box {
+        position: fixed;
+
+        right: 20px;
+        bottom: 20px;
+
+        width: 150px;
+        height: 50px;
+
+        background-color: lightpink;
+      }
+
+      /*
+        ==================================================
+        5. sticky
+        ==================================================
+
+        sticky
+        -> 스크롤 위치에 따라 동작
+
+        top: 0;
+        과 함께 사용하면
+        위쪽에 붙어있는 효과 확인 가능
+        */
+
+      .sticky-title {
+        position: sticky;
+
+        top: 0;
+
+        background-color: lightyellow;
+      }
+
+      /*
+        ==================================================
+        6. z-index
+        ==================================================
+
+        겹치는 요소의 앞뒤 순서 결정
+
+        큰 z-index
+        -> 더 앞에 표시
+        */
+
+      .layer-area {
+        position: relative;
+
+        width: 400px;
+        height: 200px;
+
+        border: 3px solid black;
+      }
+
+      .layer-one {
+        position: absolute;
+
+        top: 30px;
+        left: 30px;
+
+        width: 150px;
+        height: 100px;
+
+        background-color: lightblue;
+
+        z-index: 1;
+      }
+
+      .layer-two {
+        position: absolute;
+
+        top: 60px;
+        left: 80px;
+
+        width: 150px;
+        height: 100px;
+
+        background-color: lightcoral;
+
+        z-index: 2;
+      }
+
+      /*
+        스크롤 확인용
+        */
+
+      .long-space {
+        height: 700px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Position 실습</h1>
+
+    <!--
+    ==================================================
+    1. static
+    ==================================================
+    -->
+
+    <h2>1. static</h2>
+
+    <div class="static-box">position: static</div>
+
+    <p>static은 기본적인 문서 흐름에 따라 배치됩니다.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    2. relative
+    ==================================================
+    -->
+
+    <h2>2. relative</h2>
+
+    <div class="relative-box">position: relative</div>
+
+    <p>relative 요소의 원래 위치와 이동된 위치를 비교해보세요.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    3. absolute
+    ==================================================
+    -->
+
+    <h2>3. absolute</h2>
+
+    <div class="absolute-parent">
+      부모
+      <br />
+      position: relative
+
+      <div class="absolute-child">
+        자식
+        <br />
+        position: absolute
+      </div>
+    </div>
+
+    <hr />
+
+    <!--
+    ==================================================
+    4. z-index
+    ==================================================
+    -->
+
+    <h2>4. z-index</h2>
+
+    <div class="layer-area">
+      <div class="layer-one">z-index: 1</div>
+
+      <div class="layer-two">z-index: 2</div>
+    </div>
+
+    <hr />
+
+    <!--
+    ==================================================
+    5. sticky
+    ==================================================
+    -->
+
+    <h2 class="sticky-title">5. sticky - 스크롤하면서 확인</h2>
+
+    <div class="long-space">
+      <p>아래로 스크롤해보세요.</p>
+
+      <p>sticky 제목이 화면 위쪽에 붙는지 확인하세요.</p>
+    </div>
+
+    <!--
+    fixed는 화면 오른쪽 아래에 계속 보인다.
+    -->
+
+    <div class="fixed-box">position: fixed</div>
+  </body>
+</html>

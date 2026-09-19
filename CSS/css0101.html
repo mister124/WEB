@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 01 - Inline Style</title>
+  </head>
+
+  <body>
+    <!--
+    ==================================================
+    CSS-1 01 : CSS 기본 개념 / Inline Style
+    ==================================================
+
+    CSS
+    = Cascading Style Sheets
+
+    HTML
+    -> 문서의 구조와 내용
+
+    CSS
+    -> 문서가 어떻게 보일지 표현
+
+
+    이번 파일 핵심:
+
+    1. inline style
+    2. property
+    3. value
+    4. colon :
+    5. semicolon ;
+    6. color
+    7. font-size
+    -->
+
+    <h1>CSS 기본 실습</h1>
+
+    <!--
+    ==================================================
+    1. CSS가 없는 HTML
+    ==================================================
+
+    아래 p에는 CSS가 없다.
+
+    따라서 브라우저의 기본 스타일로 표시된다.
+    -->
+
+    <p>이 문장에는 별도의 CSS가 적용되지 않았습니다.</p>
+
+    <!--
+    ==================================================
+    2. Inline Style
+    ==================================================
+
+    inline style
+    = HTML 요소의 style 속성 안에
+      CSS를 직접 작성하는 방법
+
+    기본 구조:
+
+    style="property: value;"
+
+    예:
+
+    style="font-size: 20px;"
+
+    property
+    -> 무엇을 바꿀 것인가?
+
+    value
+    -> 어떻게 바꿀 것인가?
+    -->
+
+    <p style="font-size: 20px">이 문장은 글자 크기가 20px입니다.</p>
+
+    <!--
+    ==================================================
+    3. 여러 CSS 속성 사용
+    ==================================================
+
+    여러 CSS 선언을 사용할 때는
+    세미콜론 ; 으로 구분한다.
+
+    property: value;
+    property: value;
+
+    예:
+
+    font-size: 20px;
+    color: blue;
+    -->
+
+    <p style="font-size: 20px; color: blue">
+      이 문장은 글자 크기가 20px이고 파란색입니다.
+    </p>
+
+    <!--
+    ==================================================
+    4. color
+    ==================================================
+
+    color
+    -> 글자 색상
+
+    예:
+
+    color: red;
+    color: blue;
+    color: green;
+    -->
+
+    <p style="color: red">빨간색 글자</p>
+
+    <p style="color: green">초록색 글자</p>
+
+    <p style="color: blue">파란색 글자</p>
+
+    <!--
+    ==================================================
+    5. 여러 속성 함께 사용
+    ==================================================
+
+    한 style 안에 여러 CSS 속성을
+    동시에 작성할 수 있다.
+    -->
+
+    <p style="font-size: 30px; color: purple">큰 보라색 글자</p>
+
+    <!--
+    ==================================================
+    ★ 핵심 문법 ★
+    ==================================================
+
+    CSS 선언:
+
+    property: value;
+
+    예:
+
+    color: red;
+
+    property = color
+    value    = red
+
+
+    여러 선언:
+
+    font-size: 20px;
+    color: blue;
+
+    각 선언은 ; 으로 구분한다.
+    -->
+  </body>
+</html>

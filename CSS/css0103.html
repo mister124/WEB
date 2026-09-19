@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 03 - External Style Sheet</title>
+
+    <!--
+    ==================================================
+    CSS-1 03 : External Style Sheet
+    ==================================================
+
+    외부 CSS 파일을 HTML과 연결한다.
+
+    핵심 문법:
+
+    <link rel="stylesheet" href="css0103.css">
+
+    rel
+    -> 현재 HTML 문서와 연결된 파일의 관계
+
+    stylesheet
+    -> 연결된 파일이 CSS 스타일시트라는 뜻
+
+    href
+    -> CSS 파일의 위치
+    -->
+
+    <link rel="stylesheet" href="css0103.css" />
+  </head>
+
+  <body>
+    <h1>External Style Sheet 실습</h1>
+
+    <!--
+    CSS는 이 HTML 파일 안에 직접 작성하지 않았다.
+
+    css0103.css 파일에서
+    h1, p, class, id 등의 스타일을 지정한다.
+    -->
+
+    <h2>1. Element Selector</h2>
+
+    <p>첫 번째 문단입니다.</p>
+
+    <p>두 번째 문단입니다.</p>
+
+    <h2>2. Class Selector</h2>
+
+    <p class="special">special class가 적용된 문장입니다.</p>
+
+    <p>일반 문장입니다.</p>
+
+    <p class="special">이 문장도 special class입니다.</p>
+
+    <h2>3. ID Selector</h2>
+
+    <p id="notice">notice라는 id를 가진 문장입니다.</p>
+
+    <!--
+    ==================================================
+    핵심
+    ==================================================
+
+    HTML
+    -> 구조 / 내용
+
+    CSS
+    -> 표현 / 디자인
+
+    두 파일이 분리되어 있지만
+    <link>로 연결되어 있기 때문에
+    CSS가 적용된다.
+    -->
+  </body>
+</html>
