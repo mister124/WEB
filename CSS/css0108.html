@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 0108 - Box Model</title>
+
+    <style>
+      /* =========================================================
+           1. 기본 설정
+           ========================================================= */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      /* =========================================================
+           2. width / height
+           
+           width  : 요소의 가로 크기
+           height : 요소의 세로 크기
+           ========================================================= */
+
+      .size-box {
+        width: 300px;
+        height: 100px;
+
+        background-color: lightblue;
+
+        /* 글자를 가운데 정렬 */
+        text-align: center;
+      }
+
+      /* =========================================================
+           3. overflow
+
+           내용이 정해진 영역보다 많을 때 어떻게 처리할지 결정
+
+           overflow: visible;  기본값
+           overflow: hidden;   넘치는 부분 숨김
+           overflow: scroll;   스크롤바 표시
+           overflow: auto;     필요할 때 스크롤바 표시
+           ========================================================= */
+
+      .overflow-box {
+        width: 250px;
+        height: 80px;
+
+        border: 2px solid black;
+
+        /* 내용이 넘치면 스크롤 */
+        overflow: auto;
+      }
+
+      /* =========================================================
+           4. Box Model
+
+           하나의 HTML 요소는 다음과 같은 구조를 가짐
+
+                    margin
+              ┌─────────────────┐
+              │     border      │
+              │  ┌───────────┐  │
+              │  │  padding  │  │
+              │  │ ┌───────┐ │  │
+              │  │ │content│ │  │
+              │  │ └───────┘ │  │
+              │  └───────────┘  │
+              └─────────────────┘
+
+           안쪽 → 바깥쪽
+
+           content
+              ↓
+           padding
+              ↓
+           border
+              ↓
+           margin
+           ========================================================= */
+
+      .box-model {
+        width: 300px;
+        height: 100px;
+
+        /* content와 border 사이의 공간 */
+        padding: 20px;
+
+        /* 테두리 */
+        border-width: 5px;
+        border-style: solid;
+        border-color: black;
+
+        /* 다른 요소와의 바깥쪽 거리 */
+        margin: 30px;
+
+        background-color: lightyellow;
+      }
+
+      /* =========================================================
+           5. border
+
+           border는 크게 3가지 속성으로 이해하면 됨
+
+           border-width  : 두께
+           border-style  : 모양
+           border-color  : 색상
+           ========================================================= */
+
+      .border-example {
+        width: 250px;
+        padding: 15px;
+
+        border-width: 5px;
+        border-style: dashed;
+        border-color: red;
+      }
+
+      /* =========================================================
+           6. border 한 줄로 작성
+
+           아래와 같이 한 번에 작성할 수도 있음
+
+           border: 두께 스타일 색상;
+           ========================================================= */
+
+      .border-shortcut {
+        width: 250px;
+        padding: 15px;
+
+        border: 3px solid blue;
+      }
+
+      /* =========================================================
+           7. padding
+
+           content와 border 사이의 거리
+
+           위/오른쪽/아래/왼쪽을 각각 지정 가능
+           ========================================================= */
+
+      .padding-example {
+        width: 250px;
+
+        padding-top: 10px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+
+        border: 2px solid black;
+      }
+
+      /* =========================================================
+           8. margin
+
+           border 바깥쪽의 공간
+
+           다른 요소와 떨어지는 거리를 결정
+           ========================================================= */
+
+      .margin-example {
+        width: 250px;
+        padding: 20px;
+
+        border: 2px solid black;
+
+        margin-top: 10px;
+        margin-right: 30px;
+        margin-bottom: 40px;
+        margin-left: 50px;
+      }
+
+      /* =========================================================
+           9. margin / padding 축약형
+
+           값 1개
+           margin: 20px;
+
+           → 위/오른쪽/아래/왼쪽 모두 20px
+
+           값 2개
+           margin: 10px 20px;
+
+           → 위/아래 10px
+           → 왼쪽/오른쪽 20px
+
+           값 4개
+           margin: 10px 20px 30px 40px;
+
+           → 위 10px
+           → 오른쪽 20px
+           → 아래 30px
+           → 왼쪽 40px
+
+           padding도 같은 방식
+           ========================================================= */
+
+      .shortcut-example {
+        width: 250px;
+
+        margin: 10px 20px 30px 40px;
+        padding: 10px 20px 30px 40px;
+
+        border: 2px solid green;
+      }
+
+      /* =========================================================
+           10. Box Model 전체 확인용
+
+           각 영역을 눈으로 확인하기 위한 예제
+           ========================================================= */
+
+      .visual-box {
+        width: 200px;
+
+        /* content와 border 사이 */
+        padding: 30px;
+
+        /* border */
+        border: 10px solid orange;
+
+        /* 다른 요소와의 거리 */
+        margin: 40px;
+
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Box Model</h1>
+
+    <!-- =========================================================
+         width / height
+         ========================================================= -->
+
+    <div class="section">
+      <h2>1. width / height</h2>
+
+      <div class="size-box">
+        width: 300px<br />
+        height: 100px
+      </div>
+    </div>
+
+    <!-- =========================================================
+         overflow
+         ========================================================= -->
+
+    <div class="section">
+      <h2>2. overflow</h2>
+
+      <div class="overflow-box">
+        이 박스는 width가 250px이고 height가 80px로 고정되어 있습니다. 그런데
+        글자가 계속 길어지면 박스의 크기를 넘어갈 수 있습니다. 이때 overflow:
+        auto를 사용하면 필요한 경우 스크롤바가 나타납니다.
+      </div>
+    </div>
+
+    <!-- =========================================================
+         Box Model
+         ========================================================= -->
+
+    <div class="section">
+      <h2>3. Box Model</h2>
+
+      <div class="box-model">
+        이 영역이 content입니다. content와 테두리 사이에는 padding이 있습니다.
+      </div>
+    </div>
+
+    <!-- =========================================================
+         border
+         ========================================================= -->
+
+    <div class="section">
+      <h2>4. border</h2>
+
+      <div class="border-example">
+        border-width = 5px<br />
+        border-style = dashed<br />
+        border-color = red
+      </div>
+
+      <br />
+
+      <div class="border-shortcut">border: 3px solid blue;</div>
+    </div>
+
+    <!-- =========================================================
+         padding
+         ========================================================= -->
+
+    <div class="section">
+      <h2>5. padding</h2>
+
+      <div class="padding-example">
+        content와 border 사이의 공간이 padding입니다.
+      </div>
+    </div>
+
+    <!-- =========================================================
+         margin
+         ========================================================= -->
+
+    <div class="section">
+      <h2>6. margin</h2>
+
+      <div class="margin-example">border 바깥쪽의 공간이 margin입니다.</div>
+    </div>
+
+    <!-- =========================================================
+         margin / padding 축약형
+         ========================================================= -->
+
+    <div class="section">
+      <h2>7. margin / padding 축약형</h2>
+
+      <div class="shortcut-example">
+        margin과 padding은 여러 방향을 한 번에 지정할 수 있습니다.
+      </div>
+    </div>
+
+    <!-- =========================================================
+         Box Model 전체
+         ========================================================= -->
+
+    <div class="section">
+      <h2>8. Box Model 전체 구조</h2>
+
+      <div class="visual-box">Content</div>
+    </div>
+  </body>
+</html>

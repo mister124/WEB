@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 4.11 Media Types</title>
+
+    <style>
+      /* ==================================================
+           기본 화면용 CSS
+           ================================================== */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+
+      header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+      }
+
+      nav {
+        background-color: #ddd;
+        padding: 15px;
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin-right: 20px;
+      }
+
+      main {
+        margin-top: 20px;
+      }
+
+      .box {
+        border: 2px solid black;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      /* ==================================================
+           print
+
+           프린트할 때만 적용되는 CSS
+           ================================================== */
+
+      @media print {
+        /* 메뉴는 인쇄할 필요가 없으므로 숨김 */
+        nav {
+          display: none;
+        }
+
+        /* 헤더 배경색 등 화면용 장식을 제거 */
+        header {
+          background-color: white;
+          color: black;
+          border-bottom: 2px solid black;
+        }
+
+        /* 화면에서만 보이던 안내문 숨기기 */
+        .screen-only {
+          display: none;
+        }
+
+        /* 프린트할 때 박스를 단순하게 변경 */
+        .box {
+          border: none;
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Campus Web Seminar</h1>
+      <p>CSS Media Types 실습</p>
+    </header>
+
+    <nav>
+      <a href="#">홈</a>
+      <a href="#">강의</a>
+      <a href="#">신청</a>
+    </nav>
+
+    <main>
+      <p class="screen-only">
+        이 문장은 화면에서만 보입니다. Ctrl + P를 눌러 인쇄 미리보기를
+        확인해보세요.
+      </p>
+
+      <section class="box">
+        <h2>Media Types</h2>
+
+        <p>이 내용은 화면과 인쇄 화면에서 모두 존재합니다.</p>
+
+        <p>하지만 CSS에 의해 화면과 인쇄할 때의 모습이 달라질 수 있습니다.</p>
+      </section>
+    </main>
+  </body>
+</html>

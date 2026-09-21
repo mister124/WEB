@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 07 - Block and Inline</title>
+
+    <style>
+      /*
+        ==================================================
+        CSS-1 07
+        Block-level / Inline-level
+        div / span
+        ==================================================
+
+        핵심:
+
+        block-level
+        -> 한 줄 전체를 차지하는 형태
+
+        inline-level
+        -> 필요한 내용만큼의 공간을 차지
+
+        div
+        -> 대표적인 block-level 요소
+
+        span
+        -> 대표적인 inline-level 요소
+        */
+
+      /*
+        ==================================================
+        1. div
+        ==================================================
+        */
+
+      .box {
+        width: 300px;
+        height: 80px;
+
+        margin: 10px;
+
+        border: 2px solid black;
+
+        background-color: lightblue;
+      }
+
+      /*
+        ==================================================
+        2. span
+        ==================================================
+        */
+
+      .important {
+        color: red;
+        font-weight: bold;
+      }
+
+      /*
+        ==================================================
+        3. display
+        ==================================================
+
+        display property를 이용하면
+        요소의 표시 방식을 변경할 수 있다.
+
+        block
+        inline
+        inline-block
+        none
+        */
+
+      .inline-box {
+        display: inline;
+
+        width: 200px;
+        height: 100px;
+
+        background-color: lightgreen;
+      }
+
+      .inline-block-box {
+        display: inline-block;
+
+        width: 200px;
+        height: 100px;
+
+        background-color: lightyellow;
+
+        border: 2px solid black;
+      }
+
+      /*
+        ==================================================
+        4. display: none
+        ==================================================
+
+        화면에서 요소가 사라진다.
+
+        공간도 차지하지 않는다.
+        */
+
+      .hidden-box {
+        display: none;
+      }
+
+      /*
+        ==================================================
+        5. text-align
+        ==================================================
+
+        텍스트 정렬
+
+        left
+        center
+        right
+        */
+
+      .center-text {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Block-level / Inline-level</h1>
+
+    <!--
+    ==================================================
+    1. div
+    ==================================================
+    -->
+
+    <h2>1. div</h2>
+
+    <div class="box">첫 번째 div</div>
+
+    <div class="box">두 번째 div</div>
+
+    <div class="box">세 번째 div</div>
+
+    <p>div는 대표적인 block-level 요소입니다.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    2. span
+    ==================================================
+    -->
+
+    <h2>2. span</h2>
+
+    <p>
+      이것은 일반 문장이고
+      <span class="important">이 부분만 강조</span>
+      할 수 있습니다.
+    </p>
+
+    <p>
+      <span class="important">첫 번째 부분</span>
+      과
+      <span class="important">두 번째 부분</span>
+      을 각각 꾸밀 수 있습니다.
+    </p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    3. inline
+    ==================================================
+    -->
+
+    <h2>3. display: inline</h2>
+
+    <div class="inline-box">inline 1</div>
+
+    <div class="inline-box">inline 2</div>
+
+    <p>display: inline이 적용된 요소는 한 줄에 이어질 수 있습니다.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    4. inline-block
+    ==================================================
+    -->
+
+    <h2>4. display: inline-block</h2>
+
+    <div class="inline-block-box">box 1</div>
+
+    <div class="inline-block-box">box 2</div>
+
+    <div class="inline-block-box">box 3</div>
+
+    <hr />
+
+    <!--
+    ==================================================
+    5. display: none
+    ==================================================
+    -->
+
+    <h2>5. display: none</h2>
+
+    <p class="hidden-box">이 문장은 화면에 표시되지 않습니다.</p>
+
+    <p>위 문장은 display: none 상태입니다.</p>
+
+    <hr />
+
+    <!--
+    ==================================================
+    6. text-align
+    ==================================================
+    -->
+
+    <h2>6. text-align</h2>
+
+    <p class="center-text">가운데 정렬된 문장입니다.</p>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 0109 - Float</title>
+
+    <style>
+      /* =====================================================
+           기본 설정
+           ===================================================== */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .section {
+        margin-bottom: 50px;
+      }
+
+      /* =====================================================
+           1. float: left
+
+           요소를 왼쪽으로 띄움
+
+           그러면 뒤에 있는 텍스트가
+           그 요소의 오른쪽 주변으로 흐름
+           ===================================================== */
+
+      .float-left-box {
+        width: 150px;
+        height: 100px;
+
+        background-color: lightblue;
+
+        /* 왼쪽으로 띄우기 */
+        float: left;
+
+        /* 다른 내용과 조금 떨어뜨리기 */
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+
+      /* =====================================================
+           2. float: right
+
+           요소를 오른쪽으로 띄움
+
+           텍스트가 왼쪽 주변으로 흐름
+           ===================================================== */
+
+      .float-right-box {
+        width: 150px;
+        height: 100px;
+
+        background-color: lightgreen;
+
+        /* 오른쪽으로 띄우기 */
+        float: right;
+
+        margin-left: 20px;
+        margin-bottom: 10px;
+      }
+
+      /* =====================================================
+           3. 이미지 + 텍스트
+
+           float의 대표적인 활용
+
+           이미지를 왼쪽에 놓고
+           글자가 오른쪽으로 흐르게 만들기
+           ===================================================== */
+
+      .profile-image {
+        width: 150px;
+        height: 120px;
+
+        background-color: lightcoral;
+
+        float: left;
+
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+
+      /* =====================================================
+           4. float를 이용한 2단 레이아웃
+
+           box 2개를 모두 left로 띄우면
+           옆으로 배치할 수 있음
+           ===================================================== */
+
+      .column {
+        width: 45%;
+
+        padding: 20px;
+        box-sizing: border-box;
+
+        border: 2px solid black;
+
+        float: left;
+
+        margin-right: 5%;
+      }
+
+      .column:last-child {
+        margin-right: 0;
+      }
+
+      /* =====================================================
+           5. clear
+
+           float의 영향을 더 이상 받지 않도록 함
+
+           clear: left;
+           → 왼쪽 float의 영향을 받지 않음
+
+           clear: right;
+           → 오른쪽 float의 영향을 받지 않음
+
+           clear: both;
+           → 왼쪽/오른쪽 float 모두 영향을 받지 않음
+           ===================================================== */
+
+      .clear-both {
+        clear: both;
+
+        margin-top: 20px;
+
+        padding: 20px;
+
+        border: 2px solid blue;
+      }
+
+      /* =====================================================
+           6. float 부모 영역 문제를 보여주기 위한 예제
+
+           float 요소는 일반적인 문서 흐름에서
+           빠져나오기 때문에 부모의 높이 계산에
+           영향을 줄 수 있음.
+
+           여기서는 개념만 확인
+           ===================================================== */
+
+      .float-container {
+        border: 3px solid red;
+
+        padding: 10px;
+
+        /* float 요소 아래까지 부모 영역을
+               잡기 위한 간단한 방법 */
+        overflow: auto;
+      }
+
+      .small-box {
+        width: 100px;
+        height: 100px;
+
+        background-color: orange;
+
+        float: left;
+
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Float</h1>
+
+    <!-- =====================================================
+         1. float: left
+         ===================================================== -->
+
+    <div class="section">
+      <h2>1. float: left</h2>
+
+      <div class="float-left-box">
+        왼쪽으로<br />
+        float
+      </div>
+
+      <p>
+        이 글은 float가 적용된 박스의 주변으로 흐릅니다. 원래라면 박스 아래에서
+        시작할 수 있지만, float를 적용하면 박스가 왼쪽으로 이동하고 텍스트가
+        박스의 오른쪽 공간을 사용할 수 있습니다. 이것이 float의 기본적인
+        동작입니다.
+      </p>
+    </div>
+
+    <!-- =====================================================
+         2. float: right
+         ===================================================== -->
+
+    <div class="section">
+      <h2>2. float: right</h2>
+
+      <div class="float-right-box">
+        오른쪽으로<br />
+        float
+      </div>
+
+      <p>
+        이번에는 박스를 오른쪽으로 이동시켰습니다. 따라서 텍스트는 박스의 왼쪽
+        주변으로 흐릅니다. float: left와 반대 방향으로 생각하면 됩니다.
+      </p>
+    </div>
+
+    <!-- =====================================================
+         3. 이미지와 텍스트
+         ===================================================== -->
+
+    <div class="section">
+      <h2>3. 이미지처럼 사용하기</h2>
+
+      <div class="profile-image">이미지</div>
+
+      <p>
+        웹페이지에서 float는 이미지와 텍스트를 배치할 때 자주 사용되었습니다.
+        이미지를 왼쪽으로 float시키면 텍스트가 이미지 오른쪽으로 흐르게 됩니다.
+        이미지 주변에 margin을 주면 글자가 이미지에 너무 붙지 않도록 할 수
+        있습니다. 이런 방식으로 기사나 소개 페이지의 이미지와 본문을 배치할 수
+        있습니다.
+      </p>
+    </div>
+
+    <!-- =====================================================
+         4. 여러 요소를 float
+         ===================================================== -->
+
+    <div class="section">
+      <h2>4. float를 이용한 2단 배치</h2>
+
+      <div class="column">
+        <h3>왼쪽 영역</h3>
+
+        <p>이 박스와 오른쪽 박스에 모두 float: left를 적용했습니다.</p>
+      </div>
+
+      <div class="column">
+        <h3>오른쪽 영역</h3>
+
+        <p>
+          두 박스가 모두 왼쪽으로 float되면서 공간이 허용되는 경우 옆으로
+          배치됩니다.
+        </p>
+      </div>
+
+      <!-- float의 영향을 종료 -->
+      <div class="clear-both">
+        <strong>clear: both</strong>
+
+        <p>이 영역부터는 위의 float 요소의 영향을 받지 않도록 했습니다.</p>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         5. 부모와 float
+         ===================================================== -->
+
+    <div class="section">
+      <h2>5. float와 부모 영역</h2>
+
+      <div class="float-container">
+        <div class="small-box">float</div>
+
+        <p>
+          이 박스는 float되어 있습니다. 부모 요소가 float 요소의 높이를
+          정상적으로 계산하지 못하는 상황이 생길 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
