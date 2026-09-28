@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.2 Rounded Corners</title>
+
+    <style>
+      /* ==================================================
+           전체 페이지
+           ================================================== */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* ==================================================
+           공통 박스 설정
+           ================================================== */
+
+      .box {
+        width: 200px;
+
+        border: 3px solid navy;
+
+        padding: 20px;
+
+        margin-bottom: 30px;
+
+        text-align: center;
+
+        background-color: lightcyan;
+      }
+
+      /* ==================================================
+           1. 살짝 둥근 모서리
+
+           border-radius 값이 작으면
+           모서리가 조금만 둥글어짐
+           ================================================== */
+
+      .round1 {
+        border-radius: 0px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+      }
+
+      /* ==================================================
+           2. 더 둥근 모서리
+
+           border-radius 값이 커질수록
+           모서리가 더 많이 둥글어짐
+           ================================================== */
+
+      .round2 {
+        border-radius: 50px;
+      }
+
+      /* ==================================================
+           3. 왼쪽 위 모서리만 둥글게
+           ================================================== */
+
+      .round-top-left {
+        border-top-left-radius: 40px;
+      }
+
+      /* ==================================================
+           4. 오른쪽 위 모서리만 둥글게
+           ================================================== */
+
+      .round-top-right {
+        border-top-right-radius: 40px;
+      }
+
+      /* ==================================================
+           5. 왼쪽 아래 모서리만 둥글게
+           ================================================== */
+
+      .round-bottom-left {
+        border-bottom-left-radius: 40px;
+      }
+
+      /* ==================================================
+           6. 오른쪽 아래 모서리만 둥글게
+           ================================================== */
+
+      .round-bottom-right {
+        border-bottom-right-radius: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Rounded Corners 실습</h1>
+
+    <div class="box round1">border-radius: 15px;</div>
+
+    <div class="box round2">border-radius: 50px;</div>
+
+    <div class="box round-top-left">왼쪽 위만 둥글게</div>
+
+    <div class="box round-top-right">오른쪽 위만 둥글게</div>
+
+    <div class="box round-bottom-left">왼쪽 아래만 둥글게</div>
+
+    <div class="box round-bottom-right">오른쪽 아래만 둥글게</div>
+  </body>
+</html>

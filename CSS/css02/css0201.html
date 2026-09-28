@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.1 Text Shadows</title>
+
+    <style>
+      /* ==================================================
+           기본 설정
+           ================================================== */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* ==================================================
+           1. 기본 text-shadow
+
+           순서:
+           text-shadow:
+               horizontal-offset
+               vertical-offset
+               blur-radius
+               color;
+           ================================================== */
+
+      .shadow1 {
+        text-shadow: -20px -20px 30px gray;
+      }
+
+      /* ==================================================
+           2. 음수 horizontal offset
+
+           첫 번째 값이 음수
+           → 그림자가 글자의 왼쪽으로 이동
+           ================================================== */
+
+      .shadow2 {
+        text-shadow: -4px 4px 6px gray;
+      }
+
+      /* ==================================================
+           3. 음수 vertical offset
+
+           두 번째 값이 음수
+           → 그림자가 글자의 위쪽으로 이동
+           ================================================== */
+
+      .shadow3 {
+        text-shadow: 4px -4px 6px gray;
+      }
+
+      /* ==================================================
+           4. blur-radius = 0
+
+           세 번째 값이 0
+           → 흐림 효과 없음
+           → 그림자 경계가 선명함
+           ================================================== */
+
+      .shadow4 {
+        text-shadow: 4px 4px 0 black;
+      }
+
+      /* ==================================================
+           5. 큰 blur-radius
+
+           blur 값이 커질수록
+           그림자가 더 많이 퍼짐
+           ================================================== */
+
+      .shadow5 {
+        text-shadow: 4px 4px 15px gray;
+      }
+
+      /* 보기 편하게 글자 크기 설정 */
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Text Shadow 실습</h1>
+
+    <h2 class="shadow1">Shadow 1</h2>
+
+    <h2 class="shadow2">Shadow 2</h2>
+
+    <h2 class="shadow3">Shadow 3</h2>
+
+    <h2 class="shadow4">Shadow 4</h2>
+
+    <h2 class="shadow5">Shadow 5</h2>
+  </body>
+</html>

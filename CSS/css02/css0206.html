@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.6 Radial Gradients</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           모든 박스 공통 설정
+           ========================================= */
+
+      .box {
+        width: 350px;
+        height: 180px;
+
+        margin-bottom: 30px;
+
+        border: 2px solid black;
+
+        text-align: center;
+        line-height: 180px;
+
+        font-weight: bold;
+      }
+
+      /* =========================================
+           1. 기본 Radial Gradient
+
+           중심:
+           center
+
+           시작 색:
+           yellow
+
+           끝 색:
+           red
+           ========================================= */
+
+      .center {
+        background: radial-gradient(circle at center, yellow, red);
+      }
+
+      /* =========================================
+           2. 시작점을 위쪽으로 변경
+           ========================================= */
+
+      .top {
+        background: radial-gradient(circle at top, yellow, red);
+      }
+
+      /* =========================================
+           3. 시작점을 왼쪽으로 변경
+           ========================================= */
+
+      .left {
+        background: radial-gradient(circle at left, yellow, red);
+      }
+
+      /* =========================================
+           4. 시작점을 오른쪽으로 변경
+           ========================================= */
+
+      .right {
+        background: radial-gradient(circle at right, yellow, red);
+      }
+
+      /* =========================================
+           5. 여러 색 사용
+           ========================================= */
+
+      .multiple {
+        background: radial-gradient(
+          circle at center,
+          yellow,
+          orange,
+          red,
+          darkred
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Radial Gradient 실습</h1>
+
+    <div class="box center">Center</div>
+
+    <div class="box top">Top</div>
+
+    <div class="box left">Left</div>
+
+    <div class="box right">Right</div>
+
+    <div class="box multiple">Multiple Colors</div>
+  </body>
+</html>

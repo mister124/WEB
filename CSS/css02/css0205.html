@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.5 Linear Gradients</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           모든 gradient 박스에 공통 적용
+           ========================================= */
+
+      .box {
+        width: 350px;
+        height: 120px;
+
+        margin-bottom: 30px;
+
+        border: 2px solid black;
+
+        color: white;
+
+        text-align: center;
+
+        line-height: 120px;
+
+        font-weight: bold;
+      }
+
+      /* =========================================
+           1. 수직 Gradient
+
+           위쪽 → 아래쪽
+
+           to bottom
+           ========================================= */
+
+      .vertical {
+        background: linear-gradient(to bottom, red, blue);
+      }
+
+      /* =========================================
+           2. 수평 Gradient
+
+           왼쪽 → 오른쪽
+
+           to right
+           ========================================= */
+
+      .horizontal {
+        background: linear-gradient(to left, red, blue);
+      }
+
+      /* =========================================
+           3. 대각선 Gradient
+
+           왼쪽 위 → 오른쪽 아래
+           ========================================= */
+
+      .diagonal {
+        background: linear-gradient(to bottom right, red, blue);
+      }
+
+      /* =========================================
+           4. 여러 색 사용
+
+           원하는 만큼 색을 추가할 수 있음
+           ========================================= */
+
+      .multiple {
+        background: linear-gradient(to right, red, orange, yellow, green, blue);
+      }
+
+      /* =========================================
+           5. Color Stop
+
+           색상이 위치할 지점을 %
+           단위로 지정
+           ========================================= */
+
+      .color-stop {
+        background: linear-gradient(to right, red 0%, yellow 30%, blue 100%);
+      }
+
+      /* =========================================
+           6. 각도로 방향 지정
+
+           deg 사용
+           ========================================= */
+
+      .degree {
+        background: linear-gradient(135deg, red, blue);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Linear Gradient 실습</h1>
+
+    <div class="box vertical">Vertical</div>
+
+    <div class="box horizontal">Horizontal</div>
+
+    <div class="box diagonal">Diagonal</div>
+
+    <div class="box multiple">Multiple Colors</div>
+
+    <div class="box color-stop">Color Stops</div>
+
+    <div class="box degree">135deg</div>
+  </body>
+</html>
