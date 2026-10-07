@@ -1,0 +1,12 @@
+flex box - grid layout
+gitd-template-areas
+
+css combinator
+child sibling 등
+
+pseudo element
+first line before after marker
+
+JS
+33p. var->let 기본
+memoryconcepts skip

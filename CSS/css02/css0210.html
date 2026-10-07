@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.10 Image Borders</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           공통 박스
+
+           border-width가 실제 테두리 두께를 결정
+           ========================================= */
+
+      .box {
+        width: 300px;
+
+        padding: 30px;
+        margin-bottom: 50px;
+
+        /* border-image가 표시될 테두리 공간 */
+        border-width: 30px;
+        border-style: solid;
+
+        text-align: center;
+      }
+
+      /* =========================================
+           1. stretch
+
+           테두리 이미지를 늘려서 영역을 채움
+           ========================================= */
+
+      .stretch {
+        border-image-source: linear-gradient(45deg, red, yellow, blue);
+
+        border-image-slice: 20 30;
+
+        border-image-repeat: stretch;
+      }
+
+      /* =========================================
+           2. repeat
+
+           테두리 이미지를 반복해서 채움
+           ========================================= */
+
+      .repeat {
+        border-image-source: linear-gradient(45deg, red, yellow, blue);
+
+        border-image-slice: 30;
+
+        border-image-repeat: repeat;
+      }
+
+      /* =========================================
+           3. round
+
+           전체 타일이 딱 맞도록
+           크기를 조정하면서 반복
+           ========================================= */
+
+      .round {
+        border-image-source: linear-gradient(45deg, red, yellow, blue);
+
+        border-image-slice: 30;
+
+        border-image-repeat: round;
+      }
+
+      /* =========================================
+           4. space
+
+           완전한 타일을 반복하고
+           남는 공간을 타일 사이에 분배
+           ========================================= */
+
+      .space {
+        border-image-source: linear-gradient(45deg, red, yellow, blue);
+
+        border-image-slice: 30;
+
+        border-image-repeat: space;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Image Border 실습</h1>
+
+    <div class="box stretch">stretch</div>
+
+    <div class="box repeat">repeat</div>
+
+    <div class="box round">round</div>
+
+    <div class="box space">space</div>
+  </body>
+</html>

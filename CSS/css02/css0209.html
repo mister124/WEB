@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.9 Reflections</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           공통 박스
+           ========================================= */
+
+      .box {
+        width: 200px;
+        height: 100px;
+
+        margin: 80px;
+
+        background-color: steelblue;
+
+        color: white;
+
+        text-align: center;
+        line-height: 100px;
+
+        font-size: 24px;
+      }
+
+      /* =========================================
+           1. 아래쪽 반사
+
+           첫 번째 값:
+           reflection 방향
+
+           두 번째 값:
+           원본과 반사본 사이 간격
+           ========================================= */
+
+      .below {
+        -webkit-box-reflect: below 10px;
+      }
+
+      /* =========================================
+           2. 오른쪽 반사
+           ========================================= */
+
+      .right {
+        -webkit-box-reflect: right 20px;
+      }
+
+      /* =========================================
+           3. 아래쪽 반사 + Gradient
+
+           반사본이 아래로 갈수록
+           점점 투명해지도록 설정
+           ========================================= */
+
+      .fade {
+        -webkit-box-reflect: below 10px
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Reflection 실습</h1>
+
+    <div class="box below">Below</div>
+
+    <div class="box right">Right</div>
+
+    <div class="box fade">Fade</div>
+  </body>
+</html>

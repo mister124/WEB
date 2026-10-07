@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS 5.8 Multiple Background Images</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           여러 배경 이미지를 넣을 박스
+           ========================================= */
+
+      .box {
+        width: 500px;
+        height: 250px;
+
+        padding: 30px;
+
+        border: 10px solid black;
+
+        margin-bottom: 30px;
+
+        /* =====================================
+               배경 이미지를 2개 지정
+
+               첫 번째:
+               작은 원형 효과
+
+               두 번째:
+               전체 배경 gradient
+               ===================================== */
+
+        background-image:
+          radial-gradient(circle, yellow 0%, red 60%, transparent 61%),
+          linear-gradient(to right, lightblue, navy);
+
+        /* =====================================
+               각 배경의 위치
+
+               첫 번째 → 오른쪽 아래
+               두 번째 → 가운데
+               ===================================== */
+
+        background-position:
+          bottom right,
+          center;
+
+        /* =====================================
+               각 배경 크기
+               ===================================== */
+
+        background-size:
+          120px 120px,
+          100% 100%;
+
+        /* 반복 방지 */
+        background-repeat: no-repeat, no-repeat;
+
+        color: white;
+
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Multiple Background Images</h1>
+
+    <div class="box">여러 개의 배경을 한 요소에 적용</div>
+  </body>
+</html>
