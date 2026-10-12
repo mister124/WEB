@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript-1</title>
+  </head>
+  <body>
+    <h1>JavaScript-1 정리</h1>
+    <h2>1. First Script</h2>
+    <p>
+      script: JavaScript 코드 영역<br />
+      document: 현재 HTML 문서 객체<br />
+      writeln(): HTML 문서에 내용 출력
+    </p>
+    <script>
+      document.writeln("<p>Hello JavaScript!</p>");
+    </script>
+    <h2>2. write / 문자열 연결 / alert</h2>
+    <p>
+      write(): HTML 문서에 출력<br />
+      + : 문자열 연결<br />
+      alert(): 팝업 출력<br />
+      \n : 문자열 안 줄바꿈<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        document.write("<h1 style='color: magenta'>");
+        document.write("Welcome to JavaScript " + "Programming!</h1>");
+        window.alert("HTML\nCSS\nJavaScript");
+      }
+    </script>
+    <h2>3. prompt / 변수</h2>
+    <p>
+      let: 변수 선언<br />
+      prompt(): 사용자 입력<br />
+      = : 오른쪽 값을 왼쪽 변수에 대입<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let userName;
+        userName = window.prompt("Please enter your name");
+        document.writeln(
+          "<h1>Hello " + userName + ", welcome to JavaScript programming!</h1>",
+        );
+      }
+    </script>
+    <h2>4. Adding Integers</h2>
+    <p>
+      prompt()의 입력값은 문자열<br />
+      parseInt(): 문자열을 정수로 변환<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let firstNumber;
+        let secondNumber;
+        let number1;
+        let number2;
+        let sum;
+        firstNumber = window.prompt("첫 번째 정수를 입력하세요");
+        secondNumber = window.prompt("두 번째 정수를 입력하세요");
+        number1 = parseInt(firstNumber);
+        number2 = parseInt(secondNumber);
+        sum = number1 + number2;
+        document.writeln("<h1>The sum is " + sum + "</h1>");
+      }
+    </script>
+    <h2>5. Arithmetic</h2>
+    <p>
+      + : 덧셈<br />
+      - : 뺄셈<br />
+      * : 곱셈<br />
+      / : 나눗셈<br />
+      % : 나머지
+    </p>
+    <script>
+      {
+        let a = 10;
+        let b = 3;
+        document.writeln("<p>a + b = " + (a + b) + "</p>");
+        document.writeln("<p>a - b = " + (a - b) + "</p>");
+        document.writeln("<p>a * b = " + a * b + "</p>");
+        document.writeln("<p>a / b = " + a / b + "</p>");
+        document.writeln("<p>a % b = " + (a % b) + "</p>");
+      }
+    </script>
+    <h2>6. Decision Making</h2>
+    <p>
+      if: 조건이 true일 때 실행<br />
+      == : 같은지 비교<br />
+      != : 같지 않은지 비교<br />
+      &gt;, &lt;, &gt;=, &lt;= : 크기 비교<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let name;
+        let now = new Date();
+        let hour = now.getHours();
+        name = window.prompt("이름을 입력하세요");
+        if (hour < 12) {
+          document.write("<h1>Good Morning, ");
+        }
+        if (hour >= 12) {
+          hour = hour - 12;
+          if (hour < 6) {
+            document.write("<h1>Good Afternoon, ");
+          }
+          if (hour >= 6) {
+            document.write("<h1>Good Evening, ");
+          }
+        }
+        document.writeln(name + ", welcome to JavaScript programming!</h1>");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript-3</title>
+  </head>
+  <body>
+    <h1>JavaScript-3 정리</h1>
+    <h2>1. Counter-Controlled Repetition</h2>
+    <p>
+      control variable: 반복을 제어하는 변수<br />
+      initial value: control variable의 시작값<br />
+      condition: 반복을 계속할 조건<br />
+      increment/decrement: 반복할 때마다 control variable 변경
+    </p>
+    <h2>2. while을 이용한 Counter-Controlled Repetition</h2>
+    <script>
+      let counter = 1;
+      while (counter <= 7) {
+        document.writeln(
+          "<p style='font-size: " +
+            counter +
+            "ex'>HTML5 font size " +
+            counter +
+            "ex</p>",
+        );
+        ++counter;
+      }
+    </script>
+    <h2>3. for Repetition Statement</h2>
+    <p>
+      initialization: control variable의 초기값 설정<br />
+      condition: 반복을 계속할 조건<br />
+      increment expression: 한 번 반복한 뒤 control variable 변경
+    </p>
+    <script>
+      for (let count = 1; count <= 7; ++count) {
+        document.writeln("<p>for count: " + count + "</p>");
+      }
+    </script>
+    <h2>4. for 활용</h2>
+    <script>
+      let sum = 0;
+      for (let number = 2; number <= 100; number += 2) {
+        sum += number;
+      }
+      document.writeln("<p>2~100 짝수 합: " + sum + "</p>");
+    </script>
+    <h2>5. switch Multiple-Selection</h2>
+    <script>
+      let choice = window.prompt("1, 2, 3 중 선택하세요");
+      switch (choice) {
+        case "1":
+          document.writeln("<p>Numbered List</p>");
+          break;
+        case "2":
+          document.writeln("<p>Lettered List</p>");
+          break;
+        case "3":
+          document.writeln("<p>Roman Numbered List</p>");
+          break;
+        default:
+          document.writeln("<p>Invalid choice</p>");
+      }
+    </script>
+    <h2>6. do...while</h2>
+    <script>
+      let counter2 = 1;
+      do {
+        document.writeln("<p>count: " + counter2 + "</p>");
+        ++counter2;
+      } while (counter2 <= 6);
+    </script>
+    <h2>7. break / continue</h2>
+    <script>
+      for (let i = 1; i <= 10; ++i) {
+        if (i == 5) {
+          break;
+        }
+        document.writeln(i + " ");
+      }
+      document.writeln("<br />");
+      for (let i = 1; i <= 10; ++i) {
+        if (i == 5) {
+          continue;
+        }
+        document.writeln(i + " ");
+      }
+    </script>
+    <h2>8. Logical Operators</h2>
+    <script>
+      let age = 20;
+      let hasTicket = true;
+      if (age >= 18 && hasTicket) {
+        document.writeln("<p>입장 가능</p>");
+      }
+      if (age < 18 || !hasTicket) {
+        document.writeln("<p>입장 불가</p>");
+      }
+    </script>
+  </body>
+</html>

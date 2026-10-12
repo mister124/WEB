@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript-2 Control Statements</title>
+  </head>
+  <body>
+    <h1>JavaScript-2 정리</h1>
+    <h2>1. Control Statements</h2>
+    <p>
+      sequence: 순서대로 실행<br />
+      selection: 조건에 따라 선택 실행<br />
+      repetition: 조건에 따라 반복 실행
+    </p>
+    <h2>2. if / if...else</h2>
+    <p>
+      if: 조건이 true일 때만 실행<br />
+      if...else: true / false 중 하나를 실행<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let grade = parseInt(window.prompt("점수를 입력하세요"));
+        if (grade >= 60) {
+          document.writeln("<p>Passed</p>");
+        } else {
+          document.writeln("<p>Failed</p>");
+        }
+      }
+    </script>
+    <h2>3. while</h2>
+    <p>
+      조건이 true인 동안 반복<br />
+      반복 중 조건과 관련된 값이 변하지 않으면 infinite loop 발생 가능
+    </p>
+    <script>
+      let product = 2;
+      while (product <= 1000) {
+        document.writeln(product + "<br />");
+        product *= 2;
+      }
+    </script>
+    <h2>4. Counter-Controlled Repetition</h2>
+    <p>
+      반복 횟수를 미리 알고 있는 definite repetition.<br />
+      counter: 반복 횟수를 세는 변수<br />
+      total: 값을 누적하는 변수<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let total = 0;
+        let gradeCounter = 1;
+        while (gradeCounter <= 10) {
+          let grade = parseInt(window.prompt("점수를 입력하세요"));
+          total += grade;
+          gradeCounter++;
+        }
+        let average = total / 10;
+        document.writeln("<p>Average: " + average + "</p>");
+      }
+    </script>
+    <h2>5. Sentinel-Controlled Repetition</h2>
+    <p>
+      반복 횟수를 미리 모르는 indefinite repetition.<br />
+      sentinel: 입력 종료를 나타내는 특별한 값<br />
+      아래 실습은 -1 입력 시 종료하며 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let total = 0;
+        let gradeCounter = 0;
+        let grade = parseInt(window.prompt("점수 입력 (-1이면 종료)"));
+        while (grade != -1) {
+          total += grade;
+          gradeCounter++;
+          grade = parseInt(window.prompt("점수 입력 (-1이면 종료)"));
+        }
+        if (gradeCounter != 0) {
+          let average = total / gradeCounter;
+          document.writeln("<p>Average: " + average + "</p>");
+        } else {
+          document.writeln("<p>No grades were entered</p>");
+        }
+      }
+    </script>
+    <h2>6. Nested Control Statements</h2>
+    <p>
+      control statement 안에 다른 control statement 사용<br />
+      예: while 안에 if...else<br />
+      아래 실습은 false를 true로 변경하면 실행
+    </p>
+    <script>
+      if (false) {
+        let passes = 0;
+        let failures = 0;
+        let student = 1;
+        while (student <= 10) {
+          let result = window.prompt("1=합격, 2=불합격");
+          if (result == "1") {
+            passes++;
+          } else {
+            failures++;
+          }
+          student++;
+        }
+        document.writeln(
+          "<p>Passed: " + passes + ", Failed: " + failures + "</p>",
+        );
+        if (passes > 8) {
+          document.writeln("<p>Bonus to instructor!</p>");
+        }
+      }
+    </script>
+    <h2>7. Assignment Operators</h2>
+    <p>
+      +=, -=, *=, /=, %=<br />
+      x += 5는 x = x + 5와 동일
+    </p>
+    <script>
+      let x = 10;
+      x += 5;
+      document.writeln("<p>x += 5 결과: " + x + "</p>");
+    </script>
+    <h2>8. Increment / Decrement Operators</h2>
+    <p>
+      ++ : 1 증가<br />
+      -- : 1 감소<br />
+      a++ : 현재 값 사용 후 증가<br />
+      ++a : 먼저 증가 후 값 사용
+    </p>
+    <script>
+      let a = 5;
+      document.writeln("<p>초기 a: " + a + "</p>");
+      document.writeln("<p>a++ 결과식: " + a++ + "</p>");
+      document.writeln("<p>a++ 이후 a: " + a + "</p>");
+      a = 5;
+      document.writeln("<p>++a 결과식: " + ++a + "</p>");
+      document.writeln("<p>++a 이후 a: " + a + "</p>");
+    </script>
+  </body>
+</html>
