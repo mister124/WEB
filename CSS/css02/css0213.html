@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Skew</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           공통 박스
+           ========================================= */
+
+      .box {
+        width: 200px;
+        height: 100px;
+
+        margin: 50px;
+
+        padding: 25px 0;
+
+        background-color: lightgreen;
+
+        border: 3px solid darkgreen;
+
+        border-radius: 15px;
+
+        text-align: center;
+
+        font-size: 30px;
+      }
+
+      /* =========================================
+           1. skewX
+
+           X축 기준으로 기울임
+           → 수평 방향 기울기
+           ========================================= */
+
+      .skew-x {
+        transform: skewX(45deg);
+      }
+
+      /* =========================================
+           2. skewY
+
+           Y축 기준으로 기울임
+           → 수직 방향 기울기
+           ========================================= */
+
+      .skew-y {
+        transform: skewY(20deg);
+      }
+
+      /* =========================================
+           3. animation + skewX
+
+           PPT 예제처럼
+           여러 각도로 반복
+           ========================================= */
+
+      .animated {
+        animation: skew 3s infinite linear;
+      }
+
+      @keyframes skew {
+        0% {
+          transform: skewX(0deg);
+        }
+
+        25% {
+          transform: skewX(45deg);
+        }
+
+        50% {
+          transform: skewX(0deg);
+        }
+
+        75% {
+          transform: skewX(-45deg);
+        }
+
+        100% {
+          transform: skewX(0deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Skew 실습</h1>
+
+    <div class="box skew-x">skewX</div>
+
+    <div class="box skew-y">skewY</div>
+
+    <div class="box animated">Animation</div>
+  </body>
+</html>

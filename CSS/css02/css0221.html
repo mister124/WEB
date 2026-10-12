@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Media Queries</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           화면 폭 480px 이하
+           → 1열
+           ========================================= */
+
+      @media screen and (max-width: 480px) {
+        .content {
+          column-count: 1;
+        }
+      }
+
+      /* =========================================
+           화면 폭 481px ~ 1024px
+           → 2열
+           ========================================= */
+
+      @media screen and (min-width: 481px) and (max-width: 1024px) {
+        .content {
+          column-count: 2;
+
+          column-gap: 30px;
+
+          column-rule: 1px solid black;
+        }
+      }
+
+      /* =========================================
+           화면 폭 1025px 이상
+           → 3열
+           ========================================= */
+
+      @media screen and (min-width: 1025px) {
+        .content {
+          column-count: 3;
+
+          column-gap: 30px;
+
+          column-rule: 1px solid black;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Computers, Hardware and Software</h1>
+
+    <div class="content">
+      <p>
+        컴퓨터는 데이터를 처리하고 다양한 계산을 수행하는 전자 장치입니다.
+        현대의 컴퓨터는 많은 양의 정보를 매우 빠르게 처리할 수 있습니다.
+      </p>
+
+      <p>
+        프로그램은 컴퓨터가 수행할 명령들의 집합이며, 이러한 프로그램들이 모여
+        소프트웨어를 구성합니다. 프로그래머는 프로그램을 작성하는 사람입니다.
+      </p>
+
+      <p>
+        하드웨어에는 키보드, 디스플레이, 메모리, 저장장치와 같은 물리적인
+        장치들이 포함됩니다.
+      </p>
+
+      <p>
+        스마트폰, 자동차, 로봇과 같은 다양한 장치에도 컴퓨터 시스템이 포함되어
+        있습니다.
+      </p>
+    </div>
+  </body>
+</html>

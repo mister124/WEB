@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Transition and Transform</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           transition을 적용할 요소
+           ========================================= */
+
+      .box {
+        width: 120px;
+        height: 120px;
+
+        margin: 100px;
+
+        background-color: steelblue;
+
+        color: white;
+
+        text-align: center;
+        line-height: 120px;
+
+        /* =====================================
+               transform 속성이 변할 때
+               4초에 걸쳐 변화
+               ===================================== */
+
+        transition: transform 4s;
+      }
+
+      /* =========================================
+           마우스를 올렸을 때 transform 실행
+           ========================================= */
+
+      .box:hover {
+        /*
+                rotate(360deg)
+                → 360도 회전
+
+                scale(2, 2)
+                → 가로 2배, 세로 2배
+            */
+
+        transform: rotate(360deg) scale(2, 2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Transition & Transform 실습</h1>
+
+    <p>아래 박스에 마우스를 올려보세요.</p>
+
+    <div class="box">HOVER</div>
+  </body>
+</html>

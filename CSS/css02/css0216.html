@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Flexbox</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           Flex Container
+
+           display: flex를 부모에게 지정하면
+           바로 아래 자식들이 Flex Item이 됨
+           ========================================= */
+
+      .container {
+        display: flex;
+
+        /*
+               Flex Item이 배치되는 방향
+
+               row:
+               왼쪽 → 오른쪽
+            */
+        flex-direction: row;
+
+        /*
+               main axis 방향 정렬
+            */
+        justify-content: center;
+
+        /*
+               cross axis 방향 정렬
+            */
+        align-items: center;
+
+        /*
+               Flex Item 사이의 간격
+            */
+        gap: 20px;
+
+        height: 250px;
+
+        border: 3px solid black;
+
+        background-color: #eeeeee;
+      }
+
+      /* =========================================
+           Flex Items
+           ========================================= */
+
+      .container > div {
+        width: 100px;
+        height: 100px;
+
+        background-color: lightblue;
+
+        border: 2px solid navy;
+
+        text-align: center;
+        line-height: 100px;
+
+        font-size: 24px;
+      }
+
+      /* 첫 번째 자식 */
+      .container > div:nth-child(1) {
+        background-color: lightcoral;
+      }
+
+      /* 두 번째 자식 */
+      .container > div:nth-child(2) {
+        background-color: lightgreen;
+      }
+
+      /* 세 번째 자식 */
+      .container > div:nth-child(3) {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Flexbox 실습</h1>
+
+    <div class="container">
+      <div>A</div>
+
+      <div>B</div>
+
+      <div>C</div>
+    </div>
+  </body>
+</html>

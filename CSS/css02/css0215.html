@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Web Font</title>
+
+    <style>
+      /* =========================================
+           @font-face
+
+           웹 폰트 하나를 등록하는 규칙
+           ========================================= */
+
+      @font-face {
+        /* CSS에서 사용할 글꼴 이름 */
+        font-family: "MyWebFont";
+
+        /* 기본 스타일 */
+        font-style: normal;
+
+        /* 기본 굵기 */
+        font-weight: normal;
+
+        /*
+               실제 글꼴 파일 위치
+
+               이번 실습에서는 구조 이해용 예시
+            */
+        src: url("myfont.woff") format("woff");
+      }
+
+      body {
+        font-family: sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           등록한 웹 폰트 사용
+           ========================================= */
+
+      .web-font {
+        font-family: "MyWebFont", sans-serif;
+
+        font-size: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Web Font 실습</h1>
+
+    <p>일반 글꼴입니다.</p>
+
+    <p class="web-font">Web Font Example</p>
+  </body>
+</html>

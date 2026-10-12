@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Transitioning Between Images</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           두 요소를 겹쳐 놓을 부모
+           ========================================= */
+
+      #cover {
+        position: relative;
+
+        width: 300px;
+        height: 200px;
+
+        margin-top: 30px;
+      }
+
+      /* =========================================
+           두 박스를 같은 위치에 겹침
+           ========================================= */
+
+      #cover div {
+        position: absolute;
+
+        left: 0;
+        top: 0;
+
+        width: 300px;
+        height: 200px;
+
+        text-align: center;
+        line-height: 200px;
+
+        font-size: 30px;
+        color: white;
+      }
+
+      /* 아래쪽 요소 */
+      .bottom {
+        background-color: steelblue;
+      }
+
+      /* =========================================
+           위쪽 요소
+
+           opacity가 변할 때
+           4초 동안 ease-in-out 방식으로 변화
+           ========================================= */
+
+      .top {
+        background-color: darkorange;
+
+        transition: opacity 4s ease-in-out;
+      }
+
+      /* =========================================
+           위쪽 요소에 마우스를 올리면
+           완전히 투명하게 변경
+           ========================================= */
+
+      .top:hover {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Transition Between Images</h1>
+
+    <p>주황색 박스에 마우스를 올려보세요.</p>
+
+    <div id="cover">
+      <!-- 아래쪽 -->
+      <div class="bottom">BOTTOM</div>
+
+      <!-- 위쪽 -->
+      <div class="top">TOP</div>
+    </div>
+  </body>
+</html>

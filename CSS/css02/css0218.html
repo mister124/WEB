@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Combinators</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      .box {
+        border: 2px solid black;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      /* =========================================
+           1. Descendant Combinator
+
+           .descendant p
+
+           .descendant "안에 있는 모든" p
+           깊이는 상관없음
+           ========================================= */
+
+      .descendant p {
+        color: blue;
+      }
+
+      /* =========================================
+           2. Child Combinator
+
+           .child > p
+
+           .child의 "바로 아래 자식" p만 선택
+           ========================================= */
+
+      .child > p {
+        color: red;
+        font-weight: bold;
+      }
+
+      /* =========================================
+           3. Adjacent Sibling Combinator
+
+           h2 + p
+
+           h2 바로 다음 형제 p 하나
+           ========================================= */
+
+      .adjacent h2 + p {
+        background-color: lightgreen;
+      }
+
+      /* =========================================
+           4. General Sibling Combinator
+
+           h2 ~ p
+
+           h2 뒤에 오는 같은 부모의 p 형제들
+           ========================================= */
+
+      .general h2 ~ p {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Combinator 실습</h1>
+
+    <!-- 1. Descendant -->
+    <div class="box descendant">
+      <h2>1. Descendant</h2>
+
+      <p>직접 자식 p</p>
+
+      <section>
+        <p>section 안의 p</p>
+
+        <div>
+          <p>더 깊은 곳의 p</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2. Child -->
+    <div class="box child">
+      <h2>2. Child</h2>
+
+      <p>직접 자식 p → 적용</p>
+
+      <section>
+        <p>section 안의 p → 적용 안 됨</p>
+      </section>
+    </div>
+
+    <!-- 3. Adjacent Sibling -->
+    <div class="box adjacent">
+      <h2>3. Adjacent Sibling</h2>
+
+      <p>h2 바로 다음 p → 적용</p>
+
+      <p>두 번째 p → 적용 안 됨</p>
+    </div>
+
+    <!-- 4. General Sibling -->
+    <div class="box general">
+      <h2>4. General Sibling</h2>
+
+      <p>첫 번째 뒤쪽 p → 적용</p>
+
+      <p>두 번째 뒤쪽 p → 적용</p>
+
+      <div>중간 div</div>
+
+      <p>그 뒤 p → 이것도 적용</p>
+    </div>
+  </body>
+</html>

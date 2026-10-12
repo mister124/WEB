@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Grid Layout</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* =========================================
+           Grid Container
+
+           부모에게 display: grid
+           ========================================= */
+
+      .container {
+        display: grid;
+
+        /* =====================================
+               열(column) 구성
+
+               첫 번째 열: 200px
+               두 번째 열: 나머지 공간
+               ===================================== */
+
+        grid-template-columns: 200px 1fr;
+
+        /* =====================================
+               행(row) 구성
+               ===================================== */
+
+        grid-template-rows:
+          100px
+          300px
+          80px;
+
+        /* =====================================
+               각 영역의 배치 구조
+
+               이름을 이용해서 화면 설계
+               ===================================== */
+
+        grid-template-areas:
+          "header header"
+          "nav    main"
+          "footer footer";
+
+        gap: 10px;
+
+        width: 700px;
+      }
+
+      /* =========================================
+           각 요소를 Grid Area에 연결
+           ========================================= */
+
+      header {
+        grid-area: header;
+
+        background-color: lightblue;
+      }
+
+      nav {
+        grid-area: nav;
+
+        background-color: lightgreen;
+      }
+
+      main {
+        grid-area: main;
+
+        background-color: lightyellow;
+      }
+
+      footer {
+        grid-area: footer;
+
+        background-color: lightgray;
+      }
+
+      /* 보기 편한 공통 설정 */
+
+      header,
+      nav,
+      main,
+      footer {
+        padding: 20px;
+
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Grid Layout 실습</h1>
+
+    <div class="container">
+      <header>HEADER</header>
+
+      <nav>NAV</nav>
+
+      <main>MAIN</main>
+
+      <footer>FOOTER</footer>
+    </div>
+  </body>
+</html>
