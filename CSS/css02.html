@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-2 정리</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      /* 1. text-shadow */
+      .text-shadow {
+        font-size: 40px;
+        text-shadow: 4px 4px 10px gray;
+      }
+
+      /* 2. border-radius */
+      .round-box {
+        width: 200px;
+        padding: 20px;
+        border: 3px solid navy;
+        border-radius: 30px;
+        background-color: lightcyan;
+      }
+
+      /* 3. color */
+      .color-box {
+        padding: 20px;
+        background-color: rgba(255, 0, 0, 0.4);
+      }
+
+      /* 4. box-shadow */
+      .box-shadow {
+        width: 200px;
+        padding: 30px;
+        border: 2px solid black;
+        box-shadow: 5px 5px 15px gray;
+      }
+
+      /* 5. linear-gradient */
+      .linear-gradient {
+        width: 300px;
+        height: 100px;
+        background: linear-gradient(to right, red, yellow, blue);
+      }
+
+      /* 6. radial-gradient */
+      .radial-gradient {
+        width: 300px;
+        height: 150px;
+        background: radial-gradient(circle at center, yellow, red);
+      }
+
+      /* 7. text-stroke */
+      .text-stroke {
+        font-size: 60px;
+        color: lightcyan;
+        -webkit-text-stroke: 2px black;
+      }
+
+      /* 8. multiple backgrounds */
+      .multiple-background {
+        width: 350px;
+        height: 180px;
+        background-image:
+          radial-gradient(circle, yellow 0%, red 60%, transparent 61%),
+          linear-gradient(to right, lightblue, navy);
+        background-position:
+          bottom right,
+          center;
+        background-size:
+          100px 100px,
+          100% 100%;
+        background-repeat: no-repeat, no-repeat;
+      }
+
+      /* 9. reflection */
+      .reflection {
+        width: 150px;
+        padding: 20px;
+        margin-bottom: 80px;
+        background-color: steelblue;
+        color: white;
+        -webkit-box-reflect: below 10px;
+      }
+
+      /* 10. border-image */
+      .image-border {
+        width: 250px;
+        padding: 20px;
+        border: 20px solid;
+        border-image-source: linear-gradient(45deg, red, yellow, blue);
+        border-image-slice: 30;
+        border-image-repeat: round;
+      }
+
+      /* 11. animation */
+      .stage {
+        position: relative;
+        width: 300px;
+        height: 150px;
+        border: 1px solid black;
+      }
+      .moving-box {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-color: steelblue;
+        animation: move 4s linear infinite alternate;
+      }
+      @keyframes move {
+        0% {
+          left: 0;
+          opacity: 0.3;
+        }
+        100% {
+          left: 240px;
+          opacity: 1;
+        }
+      }
+
+      /* 12. transition / transform */
+      .transform-box {
+        width: 100px;
+        height: 100px;
+        background-color: steelblue;
+        transition: transform 2s;
+      }
+      .transform-box:hover {
+        transform: rotate(360deg) scale(1.5);
+      }
+
+      /* 13. skew */
+      .skew-box {
+        width: 150px;
+        padding: 20px;
+        background-color: lightgreen;
+        transform: skewX(20deg);
+      }
+
+      /* 14. opacity transition */
+      .cover {
+        position: relative;
+        width: 250px;
+        height: 120px;
+      }
+      .cover div {
+        position: absolute;
+        width: 250px;
+        height: 120px;
+        text-align: center;
+        line-height: 120px;
+        color: white;
+      }
+      .cover-bottom {
+        background-color: steelblue;
+      }
+      .cover-top {
+        background-color: darkorange;
+        transition: opacity 2s;
+      }
+      .cover-top:hover {
+        opacity: 0;
+      }
+
+      /* 15. web font */
+      @font-face {
+        font-family: "MyWebFont";
+        src: url("myfont.woff") format("woff");
+      }
+      .web-font {
+        font-family: "MyWebFont", sans-serif;
+        font-size: 30px;
+      }
+
+      /* 16. Flexbox */
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: 150px;
+        border: 2px solid black;
+      }
+      .flex-container div {
+        width: 70px;
+        height: 70px;
+        background-color: lightblue;
+        text-align: center;
+        line-height: 70px;
+      }
+
+      /* 17. Grid */
+      .grid-container {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        grid-template-rows: 60px 150px 60px;
+        grid-template-areas:
+          "header header"
+          "nav main"
+          "footer footer";
+        gap: 5px;
+        width: 500px;
+      }
+      .grid-header {
+        grid-area: header;
+        background-color: lightblue;
+      }
+      .grid-nav {
+        grid-area: nav;
+        background-color: lightgreen;
+      }
+      .grid-main {
+        grid-area: main;
+        background-color: lightyellow;
+      }
+      .grid-footer {
+        grid-area: footer;
+        background-color: lightgray;
+      }
+
+      /* 18. Combinators */
+      .descendant p {
+        color: blue;
+      }
+      .child > p {
+        color: red;
+      }
+      .adjacent h3 + p {
+        background-color: lightgreen;
+      }
+      .general h3 ~ p {
+        text-decoration: underline;
+      }
+
+      /* 19. Pseudo-elements */
+      .first-line {
+        width: 400px;
+      }
+      .first-line::first-line {
+        color: blue;
+        font-weight: bold;
+      }
+      .before::before {
+        content: "★ ";
+        color: red;
+      }
+      .after::after {
+        content: " ✓";
+        color: green;
+      }
+      .marker-list li::marker {
+        color: crimson;
+      }
+
+      /* 20. Multicolumn */
+      .multicolumns {
+        column-count: 3;
+        column-gap: 30px;
+        column-rule: 1px solid black;
+      }
+
+      /* 21. Media Queries */
+      .responsive {
+        column-count: 3;
+      }
+      @media screen and (max-width: 480px) {
+        .responsive {
+          column-count: 1;
+        }
+      }
+      @media screen and (min-width: 481px) and (max-width: 1024px) {
+        .responsive {
+          column-count: 2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS-2 정리</h1>
+
+    <h2>1. Text Shadow</h2>
+    <p>
+      text-shadow: horizontal-offset vertical-offset blur-radius color;<br />
+      음수 offset은 왼쪽/위쪽 방향
+    </p>
+    <p class="text-shadow">Text Shadow</p>
+
+    <h2>2. Rounded Corners</h2>
+    <p>
+      border-radius: 모서리를 둥글게 함<br />
+      border-top-left-radius처럼 개별 모서리 지정 가능
+    </p>
+    <div class="round-box">border-radius</div>
+
+    <h2>3. Color</h2>
+    <p>
+      색상 이름 / #RRGGBB / rgb() / rgba() / hsl() / hsla()<br />
+      alpha: 0 = 투명, 1 = 불투명
+    </p>
+    <div class="color-box">rgba(255, 0, 0, 0.4)</div>
+
+    <h2>4. Box Shadow</h2>
+    <p>box-shadow: horizontal vertical blur color;</p>
+    <div class="box-shadow">Box Shadow</div>
+
+    <h2>5. Linear Gradient</h2>
+    <p>
+      linear-gradient(방향, 색상...)<br />
+      방향은 to right, to bottom 또는 deg 사용 가능
+    </p>
+    <div class="linear-gradient"></div>
+
+    <h2>6. Radial Gradient</h2>
+    <p>radial-gradient(): 중심에서 바깥쪽으로 색상 변화</p>
+    <div class="radial-gradient"></div>
+
+    <h2>7. Text Stroke</h2>
+    <p>-webkit-text-stroke: 두께 색상;</p>
+    <p class="text-stroke">TEXT</p>
+
+    <h2>8. Multiple Background Images</h2>
+    <p>
+      background-image에 여러 배경을 쉼표로 지정<br />
+      position / size / repeat도 같은 순서로 각각 지정
+    </p>
+    <div class="multiple-background"></div>
+
+    <h2>9. Reflection</h2>
+    <p>-webkit-box-reflect: 방향 간격;</p>
+    <div class="reflection">Reflection</div>
+
+    <h2>10. Image Border</h2>
+    <p>
+      border-image-source: 테두리 이미지<br />
+      border-image-slice: 이미지 분할<br />
+      border-image-repeat: stretch / repeat / round / space
+    </p>
+    <div class="image-border">Border Image</div>
+
+    <h2>11. Animation</h2>
+    <p>
+      @keyframes: animation 각 시점 정의<br />
+      animation: name timing-function duration delay iteration-count direction
+    </p>
+    <div class="stage">
+      <div class="moving-box"></div>
+    </div>
+
+    <h2>12. Transition / Transform</h2>
+    <p>
+      transition: 속성 변화를 부드럽게 처리<br />
+      transform: rotate(), scale(), translate(), skew() 등으로 변형
+    </p>
+    <div class="transform-box"></div>
+
+    <h2>13. Skew</h2>
+    <p>
+      skewX(): X축 방향 기울임<br />
+      skewY(): Y축 방향 기울임
+    </p>
+    <div class="skew-box">skewX</div>
+
+    <h2>14. Opacity Transition</h2>
+    <p>
+      opacity: 0 = 완전 투명<br />
+      transition과 함께 이미지 전환 효과 구현 가능
+    </p>
+    <div class="cover">
+      <div class="cover-bottom">BOTTOM</div>
+      <div class="cover-top">HOVER</div>
+    </div>
+
+    <h2>15. Web Font</h2>
+    <p>
+      @font-face로 글꼴 등록<br />
+      font-family로 등록한 글꼴 사용
+    </p>
+    <p class="web-font">Web Font Example</p>
+
+    <h2>16. Flexbox</h2>
+    <p>
+      display: flex: 부모를 flex container로 지정<br />
+      flex-direction: 배치 방향<br />
+      justify-content: main axis 정렬<br />
+      align-items: cross axis 정렬<br />
+      gap: item 사이 간격
+    </p>
+    <div class="flex-container">
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+    </div>
+
+    <h2>17. Grid Layout</h2>
+    <p>
+      display: grid<br />
+      grid-template-columns / rows: 행과 열 크기<br />
+      grid-template-areas: 이름으로 영역 배치<br />
+      grid-area: 요소를 영역에 연결
+    </p>
+    <div class="grid-container">
+      <header class="grid-header">HEADER</header>
+      <nav class="grid-nav">NAV</nav>
+      <main class="grid-main">MAIN</main>
+      <footer class="grid-footer">FOOTER</footer>
+    </div>
+
+    <h2>18. Combinators</h2>
+    <p>
+      A B: A 안의 모든 B descendant<br />
+      A &gt; B: A의 바로 아래 B child<br />
+      A + B: A 바로 다음 형제 B<br />
+      A ~ B: A 뒤에 오는 같은 부모의 모든 B
+    </p>
+
+    <div class="descendant">
+      <p>descendant 적용</p>
+      <section><p>깊은 자손도 적용</p></section>
+    </div>
+
+    <div class="child">
+      <p>직접 자식 → 적용</p>
+      <section><p>손자 → 적용 안 됨</p></section>
+    </div>
+
+    <div class="adjacent">
+      <h3>Adjacent</h3>
+      <p>바로 다음 p → 적용</p>
+      <p>두 번째 p → 적용 안 됨</p>
+    </div>
+
+    <div class="general">
+      <h3>General Sibling</h3>
+      <p>첫 번째 p</p>
+      <p>두 번째 p</p>
+    </div>
+
+    <h2>19. Pseudo-elements</h2>
+    <p>
+      ::first-line: 첫 번째 줄<br />
+      ::before: 내용 앞에 가상 요소<br />
+      ::after: 내용 뒤에 가상 요소<br />
+      ::marker: 목록의 bullet / 번호
+    </p>
+    <p class="first-line">
+      첫 번째 줄에만 스타일이 적용됩니다. 요소의 너비에 따라 실제 첫 번째 줄의
+      범위가 달라질 수 있습니다.
+    </p>
+    <p class="before">중요 내용</p>
+    <p class="after">완료</p>
+    <ul class="marker-list">
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+
+    <h2>20. Multicolumn Layout</h2>
+    <p>
+      column-count: 열 개수<br />
+      column-gap: 열 사이 간격<br />
+      column-rule: 열 사이 구분선
+    </p>
+    <div class="multicolumns">
+      CSS는 웹페이지의 스타일을 표현합니다. 여러 열을 사용하면 긴 텍스트를
+      신문처럼 나누어 표시할 수 있습니다. column-count로 열 개수를 지정하고
+      column-gap과 column-rule을 이용해 간격과 구분선을 설정할 수 있습니다.
+    </div>
+
+    <h2>21. Media Queries</h2>
+    <p>
+      @media를 이용해 화면 크기 등에 따라 다른 CSS 적용<br />
+      max-width: 해당 크기 이하<br />
+      min-width: 해당 크기 이상
+    </p>
+    <div class="responsive">
+      화면 너비가 480px 이하이면 1열, 481px~1024px이면 2열, 그보다 크면 기본
+      3열로 표시됩니다. 브라우저 크기를 변경하면서 확인하면 됩니다.
+    </div>
+  </body>
+</html>

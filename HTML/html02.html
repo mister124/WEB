@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML-2 정리</title>
+  </head>
+  <body>
+    <h1>HTML-2 정리</h1>
+    <h2>1. HTML5 Input Types</h2>
+    <p>
+      date: 날짜 선택<br />
+      number: 숫자 입력<br />
+      email: 이메일 형식 검사<br />
+      color: 색상 선택<br />
+      required: 필수 입력<br />
+      placeholder: 입력 예시<br />
+      min / max / step: 숫자 범위와 단위
+    </p>
+    <form>
+      <p>
+        <label for="userName">이름:</label>
+        <input
+          type="text"
+          id="userName"
+          name="userName"
+          placeholder="이름 입력"
+          required
+          autofocus
+        />
+      </p>
+      <p>
+        <label for="birth">생년월일:</label>
+        <input type="date" id="birth" name="birth" required />
+      </p>
+      <p>
+        <label for="height">키:</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+        />
+      </p>
+      <p>
+        <label for="userEmail">이메일:</label>
+        <input
+          type="email"
+          id="userEmail"
+          name="userEmail"
+          placeholder="example@gmail.com"
+          required
+        />
+      </p>
+      <p>
+        <label for="favoriteColor">좋아하는 색:</label>
+        <input type="color" id="favoriteColor" name="favoriteColor" />
+      </p>
+      <input type="submit" value="검증하기" />
+    </form>
+    <h2>2. 추가 Input Types / Validation</h2>
+    <p>
+      search: 검색어 입력<br />
+      tel: 전화번호 입력, 자체 형식 검사는 없음<br />
+      pattern: 입력 형식 제한<br />
+      url: URL 형식 검사<br />
+      range: 범위 슬라이더<br />
+      time: 시간 선택<br />
+      datetime-local: 날짜 + 시간<br />
+      month: 연도 + 월<br />
+      week: 연도 + 주차
+    </p>
+    <form>
+      <p>
+        <label for="searchWord">검색어:</label>
+        <input type="search" id="searchWord" name="searchWord" />
+      </p>
+      <p>
+        <label for="phone">전화번호:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="010-1234-5678"
+          pattern="010-[0-9]{4}-[0-9]{4}"
+          required
+        />
+      </p>
+      <p>
+        <label for="homepage">홈페이지:</label>
+        <input
+          type="url"
+          id="homepage"
+          name="homepage"
+          placeholder="https://example.com"
+        />
+      </p>
+      <p>
+        <label for="score">만족도:</label>
+        <input
+          type="range"
+          id="score"
+          name="score"
+          min="0"
+          max="100"
+          step="10"
+          value="50"
+        />
+      </p>
+      <p>
+        <label for="meetingTime">회의 시간:</label>
+        <input type="time" id="meetingTime" name="meetingTime" />
+      </p>
+      <p>
+        <label for="submitDateTime">제출 날짜와 시간:</label>
+        <input
+          type="datetime-local"
+          id="submitDateTime"
+          name="submitDateTime"
+        />
+      </p>
+      <p>
+        <label for="startMonth">시작 월:</label>
+        <input type="month" id="startMonth" name="startMonth" />
+      </p>
+      <p>
+        <label for="studyWeek">학습 주차:</label>
+        <input type="week" id="studyWeek" name="studyWeek" />
+      </p>
+      <input type="submit" value="검증하기" />
+      <input type="reset" value="초기화" />
+    </form>
+    <h2>3. autocomplete / datalist / fieldset</h2>
+    <p>
+      autocomplete: 브라우저 자동완성<br />
+      datalist: 추천값 제공 + 직접 입력 가능<br />
+      input의 list 값 = datalist의 id 값<br />
+      fieldset: 관련 form 요소 그룹화<br />
+      legend: fieldset의 제목
+    </p>
+    <form autocomplete="on">
+      <p>
+        <label for="autoName">이름:</label>
+        <input type="text" id="autoName" name="autoName" autocomplete="name" />
+      </p>
+      <p>
+        <label for="major">전공:</label>
+        <input type="text" id="major" name="major" list="majorList" />
+        <datalist id="majorList">
+          <option value="컴퓨터공학"></option>
+          <option value="전기공학"></option>
+          <option value="전자공학"></option>
+          <option value="기계공학"></option>
+        </datalist>
+      </p>
+      <fieldset>
+        <legend>개인정보</legend>
+        <p>
+          <label for="personalName">이름:</label>
+          <input type="text" id="personalName" name="personalName" required />
+        </p>
+        <p>
+          <label for="personalEmail">이메일:</label>
+          <input
+            type="email"
+            id="personalEmail"
+            name="personalEmail"
+            required
+          />
+        </p>
+      </fieldset>
+    </form>
+    <h2>4. Semantic Elements</h2>
+    <p>
+      header: 머리말<br />
+      nav: 주요 탐색 링크<br />
+      section: 주제별 구역<br />
+      article: 독립적인 콘텐츠<br />
+      aside: 보조 내용<br />
+      figure: 독립적인 자료<br />
+      figcaption: figure 설명<br />
+      footer: 하단 정보<br />
+      time: 날짜/시간 의미 표현
+    </p>
+    <header>
+      <h2>웹 학습 페이지</h2>
+      <nav>
+        <a href="#htmlSection">HTML</a> |
+        <a href="#cssSection">CSS</a>
+      </nav>
+    </header>
+    <section id="htmlSection">
+      <h2>HTML</h2>
+      <article>
+        <header>
+          <h3>HTML이란?</h3>
+          <p>
+            작성일:
+            <time datetime="2026-09-18">2026년 9월 18일</time>
+          </p>
+        </header>
+        <p>HTML은 웹 문서의 구조와 내용을 표현합니다.</p>
+        <aside>디자인은 주로 CSS가 담당합니다.</aside>
+        <figure>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>기술</th>
+                <th>역할</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HTML</td>
+                <td>구조</td>
+              </tr>
+              <tr>
+                <td>CSS</td>
+                <td>스타일</td>
+              </tr>
+            </tbody>
+          </table>
+          <figcaption>웹 기술의 기본 역할</figcaption>
+        </figure>
+      </article>
+    </section>
+    <section id="cssSection">
+      <h2>CSS</h2>
+      <p>CSS는 웹페이지의 스타일을 담당합니다.</p>
+    </section>
+    <footer>
+      <p>Copyright 2026</p>
+    </footer>
+    <h2>5. details / meter / progress / 기타 요소</h2>
+    <p>
+      details + summary: 내용을 펼치고 접기<br />
+      meter: 범위 안의 현재 측정값<br />
+      progress: 작업 진행 정도<br />
+      mark: 텍스트 강조<br />
+      wbr: 줄바꿈 가능 위치<br />
+      iframe: 다른 HTML 문서를 현재 페이지에 삽입
+    </p>
+    <details>
+      <summary>HTML 시험 핵심</summary>
+      <ul>
+        <li>date: 날짜 입력</li>
+        <li>number: 숫자 입력</li>
+        <li>required: 필수 입력</li>
+        <li>pattern: 입력 형식 제한</li>
+      </ul>
+    </details>
+    <p>
+      HTML 이해도:
+      <meter min="0" max="100" value="70">70%</meter>
+    </p>
+    <p>
+      과제 진행률:
+      <progress value="3" max="5">3 / 5</progress>
+    </p>
+    <p>
+      <mark>meter = 측정값, progress = 작업 진행률</mark>
+    </p>
+    <p>WebApplicationProgramming<wbr />HTML<wbr />CSS<wbr />JavaScript</p>
+    <iframe
+      src="./html01.html"
+      title="HTML-1 정리 페이지"
+      width="700"
+      height="400"
+    ></iframe>
+  </body>
+</html>
