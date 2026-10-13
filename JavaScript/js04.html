@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript-4</title>
+    <style>
+      body { font-family: sans-serif; line-height: 1.5; padding-bottom: 100px; }
+      code, pre { background: #f3f3f3; }
+      pre { padding: 12px; overflow-x: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript-4 정리</h1>
+    <h2>1. Function 기본</h2>
+    <p>
+      function: 특정 작업을 하나로 묶어 필요할 때 호출<br />
+      parameter: 함수 정의에서 받는 값<br />
+      argument: 함수를 호출할 때 전달하는 실제 값<br />
+      return: 함수의 결과를 호출한 위치로 반환
+    </p>
+    <script>
+      function square(y) {
+        return y * y;
+      }
+      document.writeln("<p>square(5): " + square(5) + "</p>");
+    </script>
+    <h2>2. 여러 Parameter와 return</h2>
+    <p>
+      함수는 여러 parameter를 받을 수 있음<br />
+      return이 실행되면 함수는 즉시 종료되고 결과가 호출 위치로 돌아감
+    </p>
+    <script>
+      function maximum(x, y, z) {
+        return Math.max(x, y, z);
+      }
+      document.writeln("<p>maximum(10.5, 22.8, 7.3): " + maximum(10.5, 22.8, 7.3) + "</p>");
+    </script>
+    <h2>3. Function / Method 호출</h2>
+    <p>
+      function 호출: functionName(argument)<br />
+      method 호출: object.method(argument)<br />
+      argument에는 상수, 변수, 표현식 사용 가능
+    </p>
+    <script>
+      let number = 3;
+      document.writeln("<p>square(number + 1): " + square(number + 1) + "</p>");
+      document.writeln("<p>Math.pow(2, 3): " + Math.pow(2, 3) + "</p>");
+    </script>
+    <h2>4. Random Number Generation</h2>
+    <p>
+      Math.random(): 0 이상 1 미만의 실수<br />
+      Math.floor(): 소수점 아래를 버려 정수로 만듦<br />
+      연속된 정수 범위: Math.floor(a + Math.random() * b)<br />
+      a: 시작값, b: 가능한 정수의 개수
+    </p>
+    <script>
+      let die = Math.floor(1 + Math.random() * 6);
+      let random10to14 = Math.floor(10 + Math.random() * 5);
+      document.writeln("<p>주사위 1~6: " + die + "</p>");
+      document.writeln("<p>10~14: " + random10to14 + "</p>");
+    </script>
+    <h2>5. Event Handling / addEventListener</h2>
+    <p>
+      event: 사용자의 클릭·마우스 이동 같은 동작<br />
+      event handler: event가 발생했을 때 실행되는 함수<br />
+      addEventListener("event", function): 요소와 handler 연결
+    </p>
+    <button id="eventButton">클릭</button>
+    <p id="eventOutput">버튼을 눌러보세요.</p>
+    <script>
+      let eventButton = document.getElementById("eventButton");
+      eventButton.addEventListener("click", showEvent);
+      function showEvent() {
+        document.getElementById("eventOutput").innerHTML = "click event 발생";
+      }
+    </script>
+    <h2>6. load Event</h2>
+    <p>
+      window의 load event는 문서 로딩이 끝난 뒤 함수를 실행할 때 사용<br />
+      형식: window.addEventListener("load", 함수이름, false)
+    </p>
+    <script>
+      function loadedMessage() {
+        document.getElementById("loadOutput").innerHTML = "문서 load 완료";
+      }
+      window.addEventListener("load", loadedMessage, false);
+    </script>
+    <p id="loadOutput">loading...</p>
+    <h2>7. HTML5 audio / video</h2>
+    <p>
+      audio/video 요소에 id를 주면 JavaScript에서 요소를 찾아 제어 가능<br />
+      preload="auto": 필요할 때 바로 재생할 수 있도록 미리 로딩을 고려<br />
+      source의 src는 파일 위치, type은 MIME type
+    </p>
+    <pre><code>&lt;audio id="sound" preload="auto" controls&gt;
+  &lt;source src="sound.mp3" type="audio/mpeg" /&gt;
+  &lt;source src="sound.ogg" type="audio/ogg" /&gt;
+&lt;/audio&gt;
+
+&lt;video controls&gt;
+  &lt;source src="rules.mp4" type="video/mp4" /&gt;
+&lt;/video&gt;</code></pre>
+    <h2>8. Scope Rules</h2>
+    <p>
+      global scope: 함수 밖에서 선언되어 여러 함수에서 접근 가능<br />
+      local scope: 함수 내부의 변수와 parameter, 해당 함수 안에서만 사용<br />
+      같은 이름의 local 변수가 있으면 함수 안에서는 global 변수가 가려짐
+    </p>
+    <script>
+      let scopeValue = "global";
+      function scopeExample(scopeValue) {
+        let localValue = "local";
+        return "parameter: " + scopeValue + ", local: " + localValue;
+      }
+      document.writeln("<p>밖의 scopeValue: " + scopeValue + "</p>");
+      document.writeln("<p>" + scopeExample("parameter") + "</p>");
+    </script>
+    <h2>9. JavaScript Global Functions</h2>
+    <p>
+      isFinite(): 유한한 숫자인지 확인<br />
+      isNaN(): 숫자가 아닌 값인지 확인<br />
+      parseFloat(): 문자열 앞부분을 실수로 변환<br />
+      parseInt(): 문자열 앞부분을 정수로 변환
+    </p>
+    <script>
+      document.writeln("<p>parseInt('123abc'): " + parseInt("123abc") + "</p>");
+      document.writeln("<p>parseFloat('123.45abc'): " + parseFloat("123.45abc") + "</p>");
+      document.writeln("<p>isNaN('abc'): " + isNaN("abc") + "</p>");
+      document.writeln("<p>isFinite(100): " + isFinite(100) + "</p>");
+    </script>
+    <h2>10. Recursion</h2>
+    <p>
+      recursion: 함수가 자기 자신을 다시 호출<br />
+      base case: 재귀를 끝내는 가장 단순한 경우<br />
+      recursion step: 더 작은 문제로 자기 자신을 다시 호출
+    </p>
+    <script>
+      function factorial(number) {
+        if (number <= 1) {
+          return 1;
+        }
+        return number * factorial(number - 1);
+      }
+      document.writeln("<p>5! = " + factorial(5) + "</p>");
+    </script>
+    <h2>11. Recursion vs. Iteration</h2>
+    <p>
+      iteration: 반복문으로 반복, 조건이 false가 되면 종료<br />
+      recursion: 반복적인 함수 호출, base case에 도달하면 종료<br />
+      종료 조건이 잘못되면 infinite loop / infinite recursion 발생
+    </p>
+    <script>
+      function factorialIteration(number) {
+        let result = 1;
+        for (let i = 2; i <= number; ++i) {
+          result *= i;
+        }
+        return result;
+      }
+      document.writeln("<p>반복문으로 5! = " + factorialIteration(5) + "</p>");
+    </script>
+  </body>
+</html>
