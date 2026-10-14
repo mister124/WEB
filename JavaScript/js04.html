@@ -1,163 +1,267 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>JavaScript-4</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-4 정리</title>
     <style>
-      body { font-family: sans-serif; line-height: 1.5; padding-bottom: 100px; }
-      code, pre { background: #f3f3f3; }
-      pre { padding: 12px; overflow-x: auto; }
+      body {
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code,pre {
+        background:#f2f2f2       ;
+      }
+      code {
+        padding:2px 5px       ;
+      }
+      pre {
+        padding:12px;
+        overflow:auto       ;
+      }
+      input,button {
+        font:inherit;
+        padding:6px       ;
+      }
+      .out {
+        display:block;
+        margin-top:10px;
+        min-height:1.7em;
+        white-space:pre-wrap       ;
+      }
+      .die {
+        display:inline-grid;
+        place-items:center;
+        width:74px;
+        height:74px;
+        border:3px solid black;
+        border-radius:15px;
+        font-size:44px       ;
+      }
+      progress {
+        width:420px;
+        max-width:100%       ;
+      }
     </style>
   </head>
   <body>
-    <h1>JavaScript-4 정리</h1>
-    <h2>1. Function 기본</h2>
-    <p>
-      function: 특정 작업을 하나로 묶어 필요할 때 호출<br />
-      parameter: 함수 정의에서 받는 값<br />
-      argument: 함수를 호출할 때 전달하는 실제 값<br />
-      return: 함수의 결과를 호출한 위치로 반환
-    </p>
-    <script>
-      function square(y) {
-        return y * y;
+    <header>
+      <h1>JavaScript-4 정리</h1>
+      <p>함수 → 매개변수·인수·return → Math → 이벤트·DOM → setAttribute → toFixed → 스코프·재귀</p>
+    </header>
+    <section>
+      <h2>1. 함수 정의·호출·return</h2>
+      <p>
+        함수는 반복 작업을 묶는다. 정의의
+        <code>parameter</code>
+        (매개변수)가 호출 때 전달한
+        <code>argument</code>
+        (인수)를 받고,
+        <code>return</code>
+        이 결과를 돌려준다.
+      </p>
+      <pre><code>function square(number) {
+        return number * number;
       }
-      document.writeln("<p>square(5): " + square(5) + "</p>");
-    </script>
-    <h2>2. 여러 Parameter와 return</h2>
-    <p>
-      함수는 여러 parameter를 받을 수 있음<br />
-      return이 실행되면 함수는 즉시 종료되고 결과가 호출 위치로 돌아감
-    </p>
+      let result = square(5);
+      // 25</code></pre>
+      <input id="squareValue" type="number" value="5">
+      <button id="squareButton">제곱</button>
+      <output id="squareOut" class="out"></output>
+    </section>
+    <section>
+      <h2>2. Math 객체와 난수</h2>
+      <p>
+        <code>Math.max</code>
+        ,
+        <code>Math.min</code>
+        ,
+        <code>Math.floor</code>
+        ,
+        <code>Math.ceil</code>
+        ,
+        <code>Math.round</code>
+        ,
+        <code>Math.pow</code>
+        ,
+        <code>Math.sqrt</code>
+        ,
+        <code>Math.PI</code>
+        를 확인한다. 주사위 공식은
+        <code>Math.floor(1 + Math.random() * 6)</code>
+        이다.
+      </p>
+      <button id="rollButton">주사위 굴리기</button>
+      <span id="die" class="die" role="img" aria-label="주사위 1">⚀</span>
+      <output id="rollOut" class="out"></output>
+    </section>
+    <section>
+      <h2>3. 이벤트 처리와 addEventListener</h2>
+      <p>
+        <code>addEventListener("click", handler)</code>
+        는 이벤트와 처리 함수를 연결한다. 처리 함수의
+        <code>event.currentTarget</code>
+        은 리스너가 연결된 요소다.
+      </p>
+      <button class="colorButton" data-color="#e7f0ff">파랑</button>
+      <button class="colorButton" data-color="#ffeadf">주황</button>
+      <button class="colorButton" data-color="#e6f8ea">초록</button>
+      <output id="eventOut" class="out">버튼을 누르세요.</output>
+    </section>
+    <section>
+      <h2>4. DOM 속성: setAttribute / getAttribute</h2>
+      <p>
+        <code>element.setAttribute(name, value)</code>
+        는 HTML 속성을 만들거나 바꾼다. 아래 주사위는 매번
+        <code>aria-label</code>
+        ,
+        <code>data-value</code>
+        ,
+        <code>title</code>
+        을 갱신한다.
+      </p>
+      <button id="attributeButton">속성 변경</button>
+      <output id="attributeOut" class="out"></output>
+    </section>
+    <section>
+      <h2>5. 숫자 method: toFixed</h2>
+      <p>
+        <code>toFixed(n)</code>
+        는 숫자를 소수점 아래 n자리로 반올림한
+        <strong>
+          문자열
+        </strong>
+        을 반환한다.
+      </p>
+      <input id="decimalValue" type="number" step="any" value="12.34567">
+      <button id="fixedButton">toFixed(2)</button>
+      <output id="fixedOut" class="out"></output>
+    </section>
+    <section>
+      <h2>6. 오디오·비디오 요소 제어</h2>
+      <p>
+        미디어 요소의 공통 method는
+        <code>play()</code>
+        ,
+        <code>pause()</code>
+        이며
+        <code>currentTime</code>
+        ,
+        <code>volume</code>
+        ,
+        <code>muted</code>
+        같은 속성이 있다. 외부 파일 없이 실행되도록 여기서는 진행 표시를 미디어 타임라인처럼 제어한다.
+      </p>
+      <button id="playButton">재생</button>
+      <button id="pauseButton">일시정지</button>
+      <progress id="timeline" value="0" max="10">
+      </progress>
+      <output id="mediaOut" class="out">0.0초</output>
+    </section>
+    <section>
+      <h2>7. 지역·전역 스코프</h2>
+      <p>
+        함수 밖 변수는 여러 함수에서 접근할 수 있다. 함수/블록 안의
+        <code>let</code>
+        은 그 범위 안에서만 유효하므로 가능한 좁게 선언한다.
+      </p>
+      <button id="scopeButton">스코프 예제</button>
+      <output id="scopeOut" class="out"></output>
+    </section>
+    <section>
+      <h2>8. 전역 함수와 재귀</h2>
+      <p>
+        <code>parseInt</code>
+        ,
+        <code>parseFloat</code>
+        ,
+        <code>isNaN</code>
+        는 전역 함수다. 재귀 함수는 자기 자신을 호출하며 반드시 종료 조건이 필요하다.
+      </p>
+      <input id="factorialValue" type="number" min="0" max="12" value="5">
+      <button id="factorialButton">팩토리얼</button>
+      <output id="factorialOut" class="out"></output>
+    </section>
     <script>
-      function maximum(x, y, z) {
-        return Math.max(x, y, z);
+      function square(number) {
+        return number*number;
       }
-      document.writeln("<p>maximum(10.5, 22.8, 7.3): " + maximum(10.5, 22.8, 7.3) + "</p>");
-    </script>
-    <h2>3. Function / Method 호출</h2>
-    <p>
-      function 호출: functionName(argument)<br />
-      method 호출: object.method(argument)<br />
-      argument에는 상수, 변수, 표현식 사용 가능
-    </p>
-    <script>
-      let number = 3;
-      document.writeln("<p>square(number + 1): " + square(number + 1) + "</p>");
-      document.writeln("<p>Math.pow(2, 3): " + Math.pow(2, 3) + "</p>");
-    </script>
-    <h2>4. Random Number Generation</h2>
-    <p>
-      Math.random(): 0 이상 1 미만의 실수<br />
-      Math.floor(): 소수점 아래를 버려 정수로 만듦<br />
-      연속된 정수 범위: Math.floor(a + Math.random() * b)<br />
-      a: 시작값, b: 가능한 정수의 개수
-    </p>
-    <script>
-      let die = Math.floor(1 + Math.random() * 6);
-      let random10to14 = Math.floor(10 + Math.random() * 5);
-      document.writeln("<p>주사위 1~6: " + die + "</p>");
-      document.writeln("<p>10~14: " + random10to14 + "</p>");
-    </script>
-    <h2>5. Event Handling / addEventListener</h2>
-    <p>
-      event: 사용자의 클릭·마우스 이동 같은 동작<br />
-      event handler: event가 발생했을 때 실행되는 함수<br />
-      addEventListener("event", function): 요소와 handler 연결
-    </p>
-    <button id="eventButton">클릭</button>
-    <p id="eventOutput">버튼을 눌러보세요.</p>
-    <script>
-      let eventButton = document.getElementById("eventButton");
-      eventButton.addEventListener("click", showEvent);
-      function showEvent() {
-        document.getElementById("eventOutput").innerHTML = "click event 발생";
+      document.getElementById("squareButton").addEventListener("click",function() {
+        let value=Number(document.getElementById("squareValue").value);
+        document.getElementById("squareOut").textContent=`square(${value}) = ${square(value)}`;
+      });
+      let faces=["⚀","⚁","⚂","⚃","⚄","⚅"];
+      function randomDie() {
+        return Math.floor(1+Math.random()*6);
       }
-    </script>
-    <h2>6. load Event</h2>
-    <p>
-      window의 load event는 문서 로딩이 끝난 뒤 함수를 실행할 때 사용<br />
-      형식: window.addEventListener("load", 함수이름, false)
-    </p>
-    <script>
-      function loadedMessage() {
-        document.getElementById("loadOutput").innerHTML = "문서 load 완료";
+      function setDie(value) {
+        let die=document.getElementById("die");
+        die.textContent=faces[value-1];
+        die.setAttribute("aria-label",`주사위 ${value}`);
+        die.setAttribute("data-value",String(value));
+        die.setAttribute("title",`${value}이(가) 나왔습니다`);
       }
-      window.addEventListener("load", loadedMessage, false);
-    </script>
-    <p id="loadOutput">loading...</p>
-    <h2>7. HTML5 audio / video</h2>
-    <p>
-      audio/video 요소에 id를 주면 JavaScript에서 요소를 찾아 제어 가능<br />
-      preload="auto": 필요할 때 바로 재생할 수 있도록 미리 로딩을 고려<br />
-      source의 src는 파일 위치, type은 MIME type
-    </p>
-    <pre><code>&lt;audio id="sound" preload="auto" controls&gt;
-  &lt;source src="sound.mp3" type="audio/mpeg" /&gt;
-  &lt;source src="sound.ogg" type="audio/ogg" /&gt;
-&lt;/audio&gt;
-
-&lt;video controls&gt;
-  &lt;source src="rules.mp4" type="video/mp4" /&gt;
-&lt;/video&gt;</code></pre>
-    <h2>8. Scope Rules</h2>
-    <p>
-      global scope: 함수 밖에서 선언되어 여러 함수에서 접근 가능<br />
-      local scope: 함수 내부의 변수와 parameter, 해당 함수 안에서만 사용<br />
-      같은 이름의 local 변수가 있으면 함수 안에서는 global 변수가 가려짐
-    </p>
-    <script>
-      let scopeValue = "global";
-      function scopeExample(scopeValue) {
-        let localValue = "local";
-        return "parameter: " + scopeValue + ", local: " + localValue;
-      }
-      document.writeln("<p>밖의 scopeValue: " + scopeValue + "</p>");
-      document.writeln("<p>" + scopeExample("parameter") + "</p>");
-    </script>
-    <h2>9. JavaScript Global Functions</h2>
-    <p>
-      isFinite(): 유한한 숫자인지 확인<br />
-      isNaN(): 숫자가 아닌 값인지 확인<br />
-      parseFloat(): 문자열 앞부분을 실수로 변환<br />
-      parseInt(): 문자열 앞부분을 정수로 변환
-    </p>
-    <script>
-      document.writeln("<p>parseInt('123abc'): " + parseInt("123abc") + "</p>");
-      document.writeln("<p>parseFloat('123.45abc'): " + parseFloat("123.45abc") + "</p>");
-      document.writeln("<p>isNaN('abc'): " + isNaN("abc") + "</p>");
-      document.writeln("<p>isFinite(100): " + isFinite(100) + "</p>");
-    </script>
-    <h2>10. Recursion</h2>
-    <p>
-      recursion: 함수가 자기 자신을 다시 호출<br />
-      base case: 재귀를 끝내는 가장 단순한 경우<br />
-      recursion step: 더 작은 문제로 자기 자신을 다시 호출
-    </p>
-    <script>
+      document.getElementById("rollButton").addEventListener("click",function() {
+        let value=randomDie();
+        setDie(value);
+        document.getElementById("rollOut").textContent=`Math.floor(1 + Math.random() * 6) → ${value}`;
+      });
+      document.querySelectorAll(".colorButton").forEach(function(button) {
+        button.addEventListener("click",function(event) {
+          let color=event.currentTarget.dataset.color;
+          document.getElementById("eventOut").style.background=color;
+          document.getElementById("eventOut").textContent=`선택 색상: ${color}`;
+        });
+      });
+      document.getElementById("attributeButton").addEventListener("click",function() {
+        let value=randomDie();
+        setDie(value);
+        let die=document.getElementById("die");
+        document.getElementById("attributeOut").textContent=`data-value=${die.getAttribute("data-value")}, aria-label=${die.getAttribute("aria-label")}, title=${die.getAttribute("title")}`;
+      });
+      document.getElementById("fixedButton").addEventListener("click",function() {
+        let value=Number(document.getElementById("decimalValue").value);
+        let fixed=value.toFixed(2);
+        document.getElementById("fixedOut").textContent=`${value}.toFixed(2) → "${fixed}" (${typeof fixed})`;
+      });
+      let timerId=null;
+      document.getElementById("playButton").addEventListener("click",function() {
+        if(timerId)return;
+        timerId=setInterval(function() {
+          let timeline=document.getElementById("timeline");
+          timeline.value=Math.min(timeline.max,Number(timeline.value)+0.1);
+          document.getElementById("mediaOut").textContent=`${Number(timeline.value).toFixed(1)}초`;
+          if(timeline.value>=timeline.max) {
+            clearInterval(timerId);
+            timerId=null;
+          }
+        }, 100);
+      });
+      document.getElementById("pauseButton").addEventListener("click",function() {
+        clearInterval(timerId);
+        timerId=null;
+      });
+      let globalCount=0;
+      document.getElementById("scopeButton").addEventListener("click",function() {
+        globalCount++;
+        let localMessage="함수 안 지역 변수";
+        if(true) {
+          let blockMessage="블록 안 변수";
+          document.getElementById("scopeOut").textContent=`전역 ${globalCount} / ${localMessage} / ${blockMessage}`;
+        }
+      });
       function factorial(number) {
-        if (number <= 1) {
-          return 1;
-        }
-        return number * factorial(number - 1);
+        if(number<=1)return 1;
+        return number*factorial(number-1);
       }
-      document.writeln("<p>5! = " + factorial(5) + "</p>");
-    </script>
-    <h2>11. Recursion vs. Iteration</h2>
-    <p>
-      iteration: 반복문으로 반복, 조건이 false가 되면 종료<br />
-      recursion: 반복적인 함수 호출, base case에 도달하면 종료<br />
-      종료 조건이 잘못되면 infinite loop / infinite recursion 발생
-    </p>
-    <script>
-      function factorialIteration(number) {
-        let result = 1;
-        for (let i = 2; i <= number; ++i) {
-          result *= i;
-        }
-        return result;
-      }
-      document.writeln("<p>반복문으로 5! = " + factorialIteration(5) + "</p>");
+      document.getElementById("factorialButton").addEventListener("click",function() {
+        let value=parseInt(document.getElementById("factorialValue").value,10);
+        document.getElementById("factorialOut").textContent=Number.isNaN(value)||value<0?"0 이상의 정수를 입력하세요.":`${value}! = ${factorial(value)}`;
+      });
     </script>
   </body>
 </html>

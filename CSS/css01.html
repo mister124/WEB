@@ -1,493 +1,333 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CSS-1 정리</title>
     <style>
-      /* 2. Embedded Style / Selector */
-      .selector-section p {
-        color: blue;
+      :root {
+        --accent:#8b3fd1;
+        --soft:#f3eaff       ;
       }
-      .special {
-        color: orange;
-        font-weight: bold;
-      }
-      #notice {
-        color: red;
-      }
-
-      /* 4. Cascade / Inheritance / Specificity */
-      .inherit-parent {
-        color: blue;
-        font-family: Arial, sans-serif;
-        border: 2px solid black;
-      }
-      .direct-color {
-        color: red;
-      }
-      .specificity-area p {
-        background-color: lightgray;
-      }
-      .specificity-area .intro p {
-        background-color: lightyellow;
-      }
-      .specificity-area #box p {
-        background-color: lightblue;
-      }
-      .final-rule {
-        color: red;
-      }
-      .final-rule {
-        color: orange;
-      }
-      .underline {
-        text-decoration: underline;
-      }
-      .overline {
-        text-decoration: overline;
-      }
-      .line-through {
-        text-decoration: line-through;
-      }
-
-      /* 5. Pseudo-class / Length Units */
-      .link-area a:link {
-        color: red;
-      }
-      .link-area a:visited {
-        color: green;
-      }
-      .link-area a:hover {
-        color: magenta;
-        background-color: lightyellow;
-      }
-      .link-area a:active {
-        color: blue;
-      }
-      html {
-        font-size: 16px;
-      }
-      .pixel {
-        font-size: 24px;
-      }
-      .em-parent {
-        font-size: 20px;
-      }
-      .em-child {
-        font-size: 1.5em;
-      }
-      .rem-example {
-        font-size: 1.5rem;
-      }
-      .parent-box {
-        width: 400px;
-        border: 2px solid black;
-      }
-      .percent-box {
-        width: 50%;
-        background-color: lightblue;
-      }
-      .vw-box {
-        width: 50vw;
-        background-color: lightgreen;
-      }
-      .vh-box {
-        height: 10vh;
-        background-color: lightpink;
-      }
-
-      /* 6. position / z-index */
-      .static-box {
-        position: static;
-        width: 180px;
-        background-color: lightgray;
-      }
-      .relative-box {
-        position: relative;
-        left: 30px;
-        width: 180px;
-        background-color: lightblue;
-      }
-      .absolute-parent {
-        position: relative;
-        width: 400px;
-        height: 120px;
-        border: 2px solid black;
-      }
-      .absolute-child {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background-color: lightgreen;
-      }
-      .layer-area {
-        position: relative;
-        width: 300px;
-        height: 140px;
-        border: 2px solid black;
-      }
-      .layer-one,
-      .layer-two {
-        position: absolute;
-        width: 130px;
-        height: 80px;
-      }
-      .layer-one {
-        top: 20px;
-        left: 20px;
-        background-color: lightblue;
-        z-index: 1;
-      }
-      .layer-two {
-        top: 45px;
-        left: 70px;
-        background-color: lightcoral;
-        z-index: 2;
-      }
-      .sticky-title {
-        position: sticky;
-        top: 0;
-        background-color: lightyellow;
-      }
-      .fixed-box {
-        position: fixed;
-        right: 10px;
-        bottom: 10px;
-        background-color: lightpink;
-        padding: 10px;
-      }
-
-      /* 7. block / inline / display */
-      .block-box {
-        width: 250px;
-        margin: 5px;
-        border: 2px solid black;
-        background-color: lightblue;
-      }
-      .important {
-        color: red;
-      }
-      .inline-box {
-        display: inline;
-        background-color: lightgreen;
-      }
-      .inline-block-box {
-        display: inline-block;
-        width: 120px;
-        height: 60px;
-        border: 2px solid black;
-        background-color: lightyellow;
-      }
-      .hidden-box {
-        display: none;
-      }
-      .center-text {
-        text-align: center;
-      }
-
-      /* 8. Box Model */
-      .size-box {
-        width: 300px;
-        height: 80px;
-        background-color: lightblue;
-      }
-      .overflow-box {
-        width: 250px;
-        height: 60px;
-        border: 2px solid black;
-        overflow: auto;
-      }
-      .box-model {
-        width: 250px;
-        padding: 20px;
-        border: 5px solid black;
-        margin: 30px;
-        background-color: lightyellow;
-      }
-      .border-example {
-        border: 5px dashed red;
-        padding: 10px;
-      }
-      .shortcut-example {
-        margin: 10px 20px 30px 40px;
-        padding: 10px 20px 30px 40px;
-        border: 2px solid green;
-      }
-
-      /* 9. Float */
-      .float-left-box {
-        float: left;
-        width: 120px;
-        height: 80px;
-        margin-right: 15px;
-        background-color: lightblue;
-      }
-      .float-right-box {
-        float: right;
-        width: 120px;
-        height: 80px;
-        margin-left: 15px;
-        background-color: lightgreen;
-      }
-      .clear-both {
-        clear: both;
-      }
-      .float-container {
-        overflow: auto;
-        border: 2px solid red;
-        padding: 10px;
-      }
-      .small-float {
-        float: left;
-        width: 80px;
-        height: 80px;
-        margin-right: 10px;
-        background-color: orange;
-      }
-
-      /* 10. Media Types / Media Query */
-      .media-box {
-        border: 2px solid black;
-        padding: 15px;
-      }
-      @media print {
-        .screen-only {
-          display: none;
-        }
-        .media-box {
-          border: none;
-        }
-      }
-      @media screen and (max-width: 600px) {
-        .responsive-box {
-          background-color: lightyellow;
-        }
-      }
-
-      /* 11. Drop-Down Menu */
-      .menu {
-        background-color: #333;
-      }
-      .menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .menu > ul {
-        display: flex;
-      }
-      .menu li {
-        position: relative;
-      }
-      .menu a {
-        display: block;
-        padding: 10px 15px;
-        color: white;
-        text-decoration: none;
-      }
-      .menu a:hover {
-        background-color: #555;
-      }
-      .submenu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        min-width: 130px;
-        background-color: #444;
-      }
-      .menu li:hover .submenu {
-        display: block;
+      * {
+        box-sizing:border-box       ;
       }
       body {
-        padding-bottom: 180px;
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code {
+        background:#f2f2f2;
+        padding:2px 5px       ;
+      }
+      .demo {
+        margin:10px 0       ;
+      }
+      .selector-demo p {
+        color:#555       ;
+      }
+      .selector-demo>p {
+        border-left:4px solid var(--accent);
+        padding-left:10px       ;
+      }
+      .selector-demo .important {
+        color:#b3224e;
+        font-weight:700       ;
+      }
+      .selector-demo #only-one {
+        text-decoration:underline       ;
+      }
+      .box {
+        width:min(100%,430px);
+        padding:20px;
+        border:8px solid #b98be1;
+        border-radius:20px;
+        background:#f6efff;
+        box-shadow:8px 8px 0 #dac8eb       ;
+      }
+      .position-zone {
+        height:140px;
+        position:relative;
+        background:#edf2ff;
+        overflow:hidden       ;
+      }
+      .position-zone span {
+        position:absolute;
+        padding:12px;
+        color:white;
+        border-radius:8px       ;
+      }
+      .one {
+        left:20px;
+        top:20px;
+        background:#3157d5;
+        z-index:1       ;
+      }
+      .two {
+        left:75px;
+        top:58px;
+        background:#c53d68;
+        z-index:2       ;
+      }
+      .float-card img {
+        float:left;
+        margin:0 12px 6px 0       ;
+      }
+      .float-card::after {
+        content:"";
+        display:block;
+        clear:both       ;
+      }
+      .menu,.flex-demo {
+        display:flex;
+        gap:6px       ;
+      }
+      .menu {
+        list-style:none;
+        padding:0       ;
+      }
+      .menu a {
+        display:block;
+        padding:8px 12px;
+        background:var(--soft)       ;
+      }
+      .menu a:hover,.menu a:focus {
+        color:white;
+        background:var(--accent)       ;
+      }
+      .visual {
+        width:350px;
+        height:120px;
+        background:radial-gradient(circle at 20% 30%,#fff8 0 12%,transparent 13%),linear-gradient(90deg,#3157d5,#b94fd5,#ff9f43);
+        border:10px solid transparent;
+        border-image:linear-gradient(90deg,#4de,#f7a) 1;
+        transition:transform .35s,filter .35s       ;
+      }
+      .visual:hover {
+        transform:scale(1.03) rotate(-1deg);
+        filter:saturate(1.35)       ;
+      }
+      .flex-demo {
+        justify-content:space-between;
+        flex-wrap:wrap       ;
+      }
+      .flex-demo span {
+        flex:1 1 120px;
+        text-align:center;
+        padding:10px;
+        background:var(--soft)       ;
+      }
+      .columns {
+        column-count:3;
+        column-gap:28px;
+        column-rule:1px solid #cab9d9       ;
+      }
+      .spinner {
+        width:50px;
+        height:50px;
+        margin:14px;
+        border:7px solid #e5d8f1;
+        border-top-color:var(--accent);
+        border-radius:50%;
+        animation:spin 1s linear infinite       ;
+      }
+      @keyframes spin {
+        to {
+          transform:rotate(360deg)         ;
+        }
+      }
+      @media(max-width:650px) {
+        .columns {
+          column-count:1         ;
+        }
+        .menu {
+          flex-direction:column         ;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>CSS-1 정리</h1>
-
-    <h2>1. Inline Style</h2>
-    <p>
-      inline style: HTML 요소의 style 속성에 CSS 작성<br />
-      기본 문법: property: value;
-    </p>
-    <p style="font-size: 20px; color: blue">font-size: 20px; color: blue;</p>
-
-    <h2>2. Embedded Style / Selector</h2>
-    <p>
-      element selector: 태그 이름<br />
-      class selector: .class<br />
-      id selector: #id
-    </p>
-    <div class="selector-section">
-      <p>element selector 적용</p>
-      <p class="special">class selector 적용</p>
-      <p id="notice">id selector 적용</p>
-    </div>
-
-    <h2>3. External Style Sheet</h2>
-    <p>
-      외부 CSS 파일을 HTML과 분리하여 작성<br />
-      연결: &lt;link rel="stylesheet" href="style.css" /&gt;
-    </p>
-
-    <h2>4. Cascade / Inheritance / Specificity</h2>
-    <p>
-      inheritance: 일부 속성이 부모에서 자식으로 전달<br />
-      specificity: ID &gt; class &gt; element<br />
-      같은 specificity라면 나중 규칙 우선
-    </p>
-    <div class="inherit-parent">
-      부모의 color와 font-family는 상속됨.
-      <p class="direct-color">직접 지정된 color가 상속보다 우선</p>
-    </div>
-    <div class="specificity-area">
-      <div id="box" class="intro">
-        <p>#box p가 가장 구체적</p>
+    <header>
+      <h1>CSS-1 정리</h1>
+      <p>적용 방법 → 선택자·우선순위 → 글자·색 → 박스 모델 → 배치 → CSS3 효과·반응형</p>
+    </header>
+    <section>
+      <h2>1. CSS 적용과 규칙</h2>
+      <p>
+        <code>선택자 { 속성: 값; }</code>
+        형태다. 인라인
+        <code>style</code>
+        , 문서 내부
+        <code>&lt;style&gt;</code>
+        , 외부
+        <code>&lt;link rel="stylesheet" href="..."&gt;</code>
+        로 적용한다. 보통 외부 스타일시트를 사용한다.
+      </p>
+      <p style="color:#c53d68">이 문장은 인라인 스타일 예제다.</p>
+    </section>
+    <section>
+      <h2>2. 선택자·상속·겹침</h2>
+      <p>
+        요소
+        <code>p</code>
+        , 클래스
+        <code>.important</code>
+        , 아이디
+        <code>#only-one</code>
+        , 자식
+        <code>&gt;</code>
+        , 자손(공백), 그룹
+        <code>h1, h2</code>
+        , 속성
+        <code>input[type=email]</code>
+        을 구분한다. 같은 속성이 겹치면 중요도·구체성·작성 순서를 비교한다.
+      </p>
+      <div class="selector-demo demo">
+        <p>직접 자식 문단</p>
+        <div>
+          <p class="important" id="only-one">자손 + class + id</p>
+        </div>
       </div>
-    </div>
-    <p class="final-rule">같은 specificity면 나중 규칙 적용</p>
-    <p class="underline">underline</p>
-    <p class="overline">overline</p>
-    <p class="line-through">line-through</p>
-
-    <h2>5. Pseudo-class / Length Units</h2>
-    <p>
-      :link: 미방문 링크<br />
-      :visited: 방문 링크<br />
-      :hover: 마우스를 올린 상태<br />
-      :active: 클릭 중인 상태<br />
-      px: 고정 단위<br />
-      em: 현재/부모 font-size 기준<br />
-      rem: html의 font-size 기준<br />
-      %: 부모 등 기준 비율<br />
-      vw / vh: viewport 기준
-    </p>
-    <div class="link-area">
-      <a href="https://example.com">Pseudo-class 확인</a>
-    </div>
-    <p class="pixel">24px</p>
-    <div class="em-parent">
-      20px 부모
-      <p class="em-child">1.5em = 30px</p>
-    </div>
-    <p class="rem-example">1.5rem = 24px</p>
-    <div class="parent-box">
-      <div class="percent-box">부모의 50%</div>
-    </div>
-    <div class="vw-box">50vw</div>
-    <div class="vh-box">10vh</div>
-
-    <h2>6. position / z-index</h2>
-    <p>
-      static: 기본 배치<br />
-      relative: 원래 위치 기준 이동<br />
-      absolute: 가장 가까운 positioned ancestor 기준<br />
-      fixed: viewport 기준, 스크롤해도 고정<br />
-      sticky: 스크롤 위치에 따라 고정<br />
-      z-index: 큰 값이 앞쪽
-    </p>
-    <div class="static-box">static</div>
-    <div class="relative-box">relative</div>
-    <div class="absolute-parent">
-      relative parent
-      <div class="absolute-child">absolute child</div>
-    </div>
-    <div class="layer-area">
-      <div class="layer-one">z-index: 1</div>
-      <div class="layer-two">z-index: 2</div>
-    </div>
-    <h3 class="sticky-title">sticky</h3>
-    <div class="fixed-box">fixed</div>
-
-    <h2>7. Block / Inline / display</h2>
-    <p>
-      div: 대표적인 block-level 요소<br />
-      span: 대표적인 inline-level 요소<br />
-      block: 한 줄 영역 차지<br />
-      inline: 내용 크기만 차지<br />
-      inline-block: inline 배치 + width/height 가능<br />
-      none: 화면과 공간에서 제거
-    </p>
-    <div class="block-box">block div 1</div>
-    <div class="block-box">block div 2</div>
-    <p>문장 중 <span class="important">이 부분만 span</span> 적용</p>
-    <div class="inline-box">inline 1</div>
-    <div class="inline-box">inline 2</div>
-    <br />
-    <div class="inline-block-box">inline-block 1</div>
-    <div class="inline-block-box">inline-block 2</div>
-    <p class="hidden-box">display: none</p>
-    <p class="center-text">text-align: center</p>
-
-    <h2>8. Box Model</h2>
-    <p>
-      구조: content → padding → border → margin<br />
-      padding: content와 border 사이<br />
-      margin: border 바깥 공간<br />
-      overflow: 넘치는 내용 처리
-    </p>
-    <div class="size-box">width / height</div>
-    <div class="overflow-box">
-      내용이 영역보다 길면 overflow 설정에 따라 스크롤하거나 숨길 수 있습니다.
-      이 예제는 overflow: auto입니다.
-    </div>
-    <div class="box-model">content + padding + border + margin</div>
-    <div class="border-example">border: 5px dashed red</div>
-    <div class="shortcut-example">margin / padding: top right bottom left</div>
-
-    <h2>9. Float / Clear</h2>
-    <p>
-      float: 요소를 좌/우로 이동시키고 주변 내용이 흐르게 함<br />
-      clear: float의 영향을 종료<br />
-      clear: both: 좌우 float 모두 해제
-    </p>
-    <div class="float-container">
-      <div class="float-left-box">float: left</div>
+    </section>
+    <section>
+      <h2>3. 텍스트·색·단위</h2>
       <p>
-        텍스트가 왼쪽 float 요소의 오른쪽으로 흐르는 것을 확인할 수 있습니다.
+        <code>font-family</code>
+        ,
+        <code>font-size</code>
+        ,
+        <code>font-weight</code>
+        ,
+        <code>font-style</code>
+        ,
+        <code>text-align</code>
+        ,
+        <code>text-decoration</code>
+        ,
+        <code>line-height</code>
+        ,
+        <code>color</code>
+        ,
+        <code>background</code>
+        를 사용한다. 단위는
+        <code>px</code>
+        ,
+        <code>%</code>
+        ,
+        <code>em</code>
+        ,
+        <code>rem</code>
+        ,
+        <code>vw/vh</code>
+        가 대표적이다.
       </p>
-      <div class="clear-both"></div>
-      <div class="float-right-box">float: right</div>
+      <div class="demo" style="text-align:center;text-shadow:2px 2px 3px #cbb2df;font:700 1.4rem Georgia,serif">
+        Typography &amp; text-shadow
+      </div>
+    </section>
+    <section>
+      <h2>4. 박스 모델·테두리</h2>
       <p>
-        텍스트가 오른쪽 float 요소의 왼쪽으로 흐르는 것을 확인할 수 있습니다.
+        안쪽부터 content → padding → border → margin이다.
+        <code>box-sizing:border-box</code>
+        는 지정한 너비에 padding과 border를 포함한다.
       </p>
-      <div class="clear-both"></div>
-      <div class="small-float">float</div>
-      <p>부모에 overflow: auto를 주어 float 영역까지 포함합니다.</p>
-    </div>
-
-    <h2>10. Media Types / Media Query</h2>
-    <p>
-      @media print: 인쇄할 때 적용<br />
-      @media screen: 화면에서 적용<br />
-      max-width / min-width: 화면 크기에 따라 CSS 변경
-    </p>
-    <p class="screen-only">이 문장은 인쇄할 때 숨겨집니다.</p>
-    <div class="media-box responsive-box">
-      화면 폭이 600px 이하이면 배경색이 변경됩니다.
-    </div>
-
-    <h2>11. Drop-Down Menu</h2>
-    <p>
-      평소 submenu는 display: none<br />
-      부모 li:hover 시 submenu를 display: block으로 변경
-    </p>
-    <nav class="menu">
-      <ul>
-        <li><a href="#">홈</a></li>
-        <li>
-          <a href="#">게임</a>
-          <ul class="submenu">
-            <li><a href="#">RPG</a></li>
-            <li><a href="#">FPS</a></li>
-            <li><a href="#">스포츠</a></li>
-          </ul>
-        </li>
-        <li><a href="#">공지사항</a></li>
-      </ul>
-    </nav>
+      <div class="box">
+        width + padding + border + margin
+        <br>
+        <code>border-radius</code>
+        와
+        <code>box-shadow</code>
+        적용
+      </div>
+    </section>
+    <section>
+      <h2>5. 배치·겹침·float</h2>
+      <p>
+        <code>position</code>
+        은 static/relative/absolute/fixed/sticky, 겹침 순서는
+        <code>z-index</code>
+        로 조절한다.
+        <code>float</code>
+        뒤의 흐름은
+        <code>clear</code>
+        로 정리한다.
+      </p>
+      <div class="position-zone demo">
+        <span class="one">z-index: 1</span>
+        <span class="two">z-index: 2</span>
+      </div>
+      <div class="float-card demo">
+        <img alt="보라색 사각형" width="70" height="70" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70'%3E%3Crect width='70' height='70' rx='10' fill='%238b3fd1'/%3E%3C/svg%3E">
+        <p>이미지가 왼쪽으로 떠 있고 텍스트가 둘러싼다. 현재는 가상 요소로 float를 해제했다.</p>
+      </div>
+    </section>
+    <section>
+      <h2>6. 의사 클래스와 메뉴</h2>
+      <p>
+        <code>:hover</code>
+        ,
+        <code>:focus</code>
+        ,
+        <code>:first-child</code>
+        ,
+        <code>:nth-child()</code>
+        처럼 상태나 위치를 선택한다.
+      </p>
+      <nav>
+        <ul class="menu">
+          <li>
+            <a href="#">HTML</a>
+          </li>
+          <li>
+            <a href="#">CSS</a>
+          </li>
+          <li>
+            <a href="#">JavaScript</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section>
+      <h2>7. CSS3 시각 효과</h2>
+      <p>
+        둥근 모서리, 그림자, 선형·방사형 그라디언트, 다중 배경,
+        <code>border-image</code>
+        ,
+        <code>transform</code>
+        ,
+        <code>transition</code>
+        ,
+        <code>@keyframes</code>
+        애니메이션을 확인한다. 사용자 글꼴은
+        <code>@font-face</code>
+        로 등록한다. 아래 막대에 마우스를 올려 본다.
+      </p>
+      <div class="visual"></div>
+      <div class="spinner" aria-label="회전 애니메이션"></div>
+    </section>
+    <section>
+      <h2>8. Flexbox·다단·반응형</h2>
+      <p>
+        <code>display:flex</code>
+        는 한 축의 배치를 정리하고,
+        <code>column-count</code>
+        는 신문처럼 단을 나눈다.
+        <code>@media</code>
+        는 화면/인쇄 같은 매체와 폭 조건에 따라 규칙을 바꾼다.
+      </p>
+      <div class="flex-demo">
+        <span>flex item 1</span>
+        <span>flex item 2</span>
+        <span>flex item 3</span>
+      </div>
+      <div class="columns">
+        CSS는 표현을 담당한다. 작은 화면에서는 이 영역이 한 단으로 바뀐다. 메뉴도 세로로 바뀌며, 여백이 줄어든다. 브라우저 폭을 줄여 결과를 확인한다.
+      </div>
+    </section>
   </body>
 </html>

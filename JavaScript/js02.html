@@ -1,142 +1,177 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>JavaScript-2 Control Statements</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-2 정리</title>
+    <style>
+      body {
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code,pre {
+        background:#f2f2f2       ;
+      }
+      code {
+        padding:2px 5px       ;
+      }
+      pre {
+        padding:12px;
+        overflow:auto       ;
+      }
+      input,button {
+        font:inherit;
+        padding:6px       ;
+      }
+      .out {
+        display:block;
+        margin-top:10px;
+        min-height:1.7em;
+        white-space:pre-wrap       ;
+      }
+    </style>
   </head>
   <body>
-    <h1>JavaScript-2 정리</h1>
-    <h2>1. Control Statements</h2>
-    <p>
-      sequence: 순서대로 실행<br />
-      selection: 조건에 따라 선택 실행<br />
-      repetition: 조건에 따라 반복 실행
-    </p>
-    <h2>2. if / if...else</h2>
-    <p>
-      if: 조건이 true일 때만 실행<br />
-      if...else: true / false 중 하나를 실행<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
+    <header>
+      <h1>JavaScript-2 정리</h1>
+      <p>알고리즘 → 선택문 → 논리 연산 → while 반복 → 카운터·센티널 → 증감</p>
+    </header>
+    <section>
+      <h2>1. 알고리즘과 제어 구조</h2>
+      <p>문제를 순서가 분명한 절차로 만들고, 의사 코드로 점검한 뒤 구현한다. 기본 제어 구조는 순차, 선택, 반복이다.</p>
+      <pre><code>총점 = 0
+입력한 점수가 -1이 아닌 동안
+  총점에 점수를 더한다
+  개수를 1 증가시킨다
+평균을 출력한다</code></pre>
+    </section>
+    <section>
+      <h2>2. if / else if / else</h2>
+      <p>
+        단일 선택, 양자택일, 다중 선택을 표현한다. 블록 중첩 시 어느
+        <code>if</code>
+        의
+        <code>else</code>
+        인지 중괄호로 명확히 한다.
+      </p>
+      <input id="grade" type="number" value="85" min="0" max="100">
+      <button id="gradeButton">등급</button>
+      <output id="gradeOut" class="out"></output>
+    </section>
+    <section>
+      <h2>3. 비교·논리·조건 연산자</h2>
+      <p>
+        동등 비교는 형 변환 없는
+        <code>===</code>
+        /
+        <code>!==</code>
+        를 권장한다. 논리 연산자는 AND
+        <code>&amp;&amp;</code>
+        , OR
+        <code>||</code>
+        , NOT
+        <code>!</code>
+        , 조건 연산자는
+        <code>조건 ? 참값 : 거짓값</code>
+        이다.
+      </p>
+      <label>
+        나이
+        <input id="age" type="number" value="20">
+      </label>
+      <label>
+        <input id="ticket" type="checkbox" checked>
+        티켓 있음
+      </label>
+      <button id="entryButton">입장 확인</button>
+      <output id="entryOut" class="out"></output>
+    </section>
+    <section>
+      <h2>4. while: 카운터 제어 반복</h2>
+      <p>반복 횟수를 알면 카운터를 초기화하고, 조건을 검사하고, 매회 갱신한다.</p>
+      <input id="count" type="number" value="5" min="1" max="20">
+      <button id="countButton">1부터 출력</button>
+      <output id="countOut" class="out"></output>
+    </section>
+    <section>
+      <h2>5. 센티널 반복과 평균</h2>
+      <p>
+        입력 개수를 모를 때 종료 표시값(sentinel)을 사용한다. 아래는 쉼표로 입력하며
+        <code>-1</code>
+        뒤는 무시한다.
+      </p>
+      <input id="scores" value="80, 90, 70, -1">
+      <button id="averageButton">평균 계산</button>
+      <output id="averageOut" class="out"></output>
+    </section>
+    <section>
+      <h2>6. 대입·증감</h2>
+      <p>
+        <code>x += 3</code>
+        은
+        <code>x = x + 3</code>
+        과 같다.
+        <code>x++</code>
+        는 값을 사용한 뒤 증가,
+        <code>++x</code>
+        는 증가한 뒤 값을 사용한다.
+      </p>
+      <button id="incrementButton">전위/후위 비교</button>
+      <output id="incrementOut" class="out"></output>
+    </section>
     <script>
-      if (false) {
-        let grade = parseInt(window.prompt("점수를 입력하세요"));
-        if (grade >= 60) {
-          document.writeln("<p>Passed</p>");
-        } else {
-          document.writeln("<p>Failed</p>");
+      document.getElementById("gradeButton").addEventListener("click",function() {
+        let score=Number(document.getElementById("grade").value);
+        let grade;
+        if(score>=90)grade="A";
+        else if(score>=80)grade="B";
+        else if(score>=70)grade="C";
+        else if(score>=60)grade="D";
+        else grade="F";
+        document.getElementById("gradeOut").textContent=`${score}점 → ${grade}`;
+      });
+      document.getElementById("entryButton").addEventListener("click",function() {
+        let age=Number(document.getElementById("age").value);
+        let hasTicket=document.getElementById("ticket").checked;
+        document.getElementById("entryOut").textContent=age>=18&&hasTicket?"입장 가능":"입장 불가";
+      });
+      document.getElementById("countButton").addEventListener("click",function() {
+        let limit=Math.min(20,Number(document.getElementById("count").value));
+        let counter=1;
+        let result=[];
+        while(counter<=limit) {
+          result.push(counter);
+          counter++;
         }
-      }
-    </script>
-    <h2>3. while</h2>
-    <p>
-      조건이 true인 동안 반복<br />
-      반복 중 조건과 관련된 값이 변하지 않으면 infinite loop 발생 가능
-    </p>
-    <script>
-      let product = 2;
-      while (product <= 1000) {
-        document.writeln(product + "<br />");
-        product *= 2;
-      }
-    </script>
-    <h2>4. Counter-Controlled Repetition</h2>
-    <p>
-      반복 횟수를 미리 알고 있는 definite repetition.<br />
-      counter: 반복 횟수를 세는 변수<br />
-      total: 값을 누적하는 변수<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let total = 0;
-        let gradeCounter = 1;
-        while (gradeCounter <= 10) {
-          let grade = parseInt(window.prompt("점수를 입력하세요"));
-          total += grade;
-          gradeCounter++;
-        }
-        let average = total / 10;
-        document.writeln("<p>Average: " + average + "</p>");
-      }
-    </script>
-    <h2>5. Sentinel-Controlled Repetition</h2>
-    <p>
-      반복 횟수를 미리 모르는 indefinite repetition.<br />
-      sentinel: 입력 종료를 나타내는 특별한 값<br />
-      아래 실습은 -1 입력 시 종료하며 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let total = 0;
-        let gradeCounter = 0;
-        let grade = parseInt(window.prompt("점수 입력 (-1이면 종료)"));
-        while (grade != -1) {
-          total += grade;
-          gradeCounter++;
-          grade = parseInt(window.prompt("점수 입력 (-1이면 종료)"));
-        }
-        if (gradeCounter != 0) {
-          let average = total / gradeCounter;
-          document.writeln("<p>Average: " + average + "</p>");
-        } else {
-          document.writeln("<p>No grades were entered</p>");
-        }
-      }
-    </script>
-    <h2>6. Nested Control Statements</h2>
-    <p>
-      control statement 안에 다른 control statement 사용<br />
-      예: while 안에 if...else<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let passes = 0;
-        let failures = 0;
-        let student = 1;
-        while (student <= 10) {
-          let result = window.prompt("1=합격, 2=불합격");
-          if (result == "1") {
-            passes++;
-          } else {
-            failures++;
+        document.getElementById("countOut").textContent=result.join(" → ");
+      });
+      document.getElementById("averageButton").addEventListener("click",function() {
+        let inputs=document.getElementById("scores").value.split(",");
+        let total=0;
+        let count=0;
+        let index=0;
+        while(index<inputs.length) {
+          let score=Number(inputs[index].trim());
+          if(score===-1)break;
+          if(!Number.isNaN(score)) {
+            total+=score;
+            count++;
           }
-          student++;
+          index++;
         }
-        document.writeln(
-          "<p>Passed: " + passes + ", Failed: " + failures + "</p>",
-        );
-        if (passes > 8) {
-          document.writeln("<p>Bonus to instructor!</p>");
-        }
-      }
-    </script>
-    <h2>7. Assignment Operators</h2>
-    <p>
-      +=, -=, *=, /=, %=<br />
-      x += 5는 x = x + 5와 동일
-    </p>
-    <script>
-      let x = 10;
-      x += 5;
-      document.writeln("<p>x += 5 결과: " + x + "</p>");
-    </script>
-    <h2>8. Increment / Decrement Operators</h2>
-    <p>
-      ++ : 1 증가<br />
-      -- : 1 감소<br />
-      a++ : 현재 값 사용 후 증가<br />
-      ++a : 먼저 증가 후 값 사용
-    </p>
-    <script>
-      let a = 5;
-      document.writeln("<p>초기 a: " + a + "</p>");
-      document.writeln("<p>a++ 결과식: " + a++ + "</p>");
-      document.writeln("<p>a++ 이후 a: " + a + "</p>");
-      a = 5;
-      document.writeln("<p>++a 결과식: " + ++a + "</p>");
-      document.writeln("<p>++a 이후 a: " + a + "</p>");
+        document.getElementById("averageOut").textContent=count?`합계 ${total}, 개수 ${count}, 평균 ${(total/count).toFixed(2)}`:"유효한 점수가 없습니다.";
+      });
+      document.getElementById("incrementButton").addEventListener("click",function() {
+        let a=5;
+        let post=a++;
+        let b=5;
+        let pre=++b;
+        document.getElementById("incrementOut").textContent=`후위: 반환 ${post}, 이후 ${a}\n전위: 반환 ${pre}, 이후 ${b}`;
+      });
     </script>
   </body>
 </html>

@@ -1,102 +1,204 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>JavaScript-3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-3 정리</title>
+    <style>
+      body {
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code {
+        background:#f2f2f2;
+        padding:2px 5px       ;
+      }
+      input,button {
+        font:inherit;
+        padding:6px       ;
+      }
+      .out {
+        display:block;
+        margin-top:10px;
+        min-height:1.7em;
+        white-space:pre-wrap       ;
+      }
+      table {
+        border-collapse:collapse       ;
+      }
+      th,td {
+        padding:7px;
+        border:1px solid black;
+        text-align:right       ;
+      }
+    </style>
   </head>
   <body>
-    <h1>JavaScript-3 정리</h1>
-    <h2>1. Counter-Controlled Repetition</h2>
-    <p>
-      control variable: 반복을 제어하는 변수<br />
-      initial value: control variable의 시작값<br />
-      condition: 반복을 계속할 조건<br />
-      increment/decrement: 반복할 때마다 control variable 변경
-    </p>
-    <h2>2. while을 이용한 Counter-Controlled Repetition</h2>
+    <header>
+      <h1>JavaScript-3 정리</h1>
+      <p>while·for·do while → switch → 복리 계산 → break·continue → 중첩 반복</p>
+    </header>
+    <section>
+      <h2>1. 반복문 비교</h2>
+      <p>
+        <code>while</code>
+        은 먼저 조건 검사,
+        <code>do...while</code>
+        은 한 번 실행 후 검사,
+        <code>for</code>
+        는 초기식·조건식·증감식을 한곳에 쓴다.
+      </p>
+      <button id="loopButton">세 반복문 실행</button>
+      <output id="loopOut" class="out"></output>
+    </section>
+    <section>
+      <h2>2. for와 누적</h2>
+      <p>
+        증감식은
+        <code>i++</code>
+        뿐 아니라
+        <code>i += 2</code>
+        처럼 바꿀 수 있다.
+      </p>
+      <input id="sumLimit" type="number" value="100" min="2">
+      <button id="sumButton">짝수 합</button>
+      <output id="sumOut" class="out"></output>
+    </section>
+    <section>
+      <h2>3. switch</h2>
+      <p>
+        표현식 값과 일치하는
+        <code>case</code>
+        부터 실행한다. 보통
+        <code>break</code>
+        로 다음 case 실행을 막고, 해당 값이 없으면
+        <code>default</code>
+        를 실행한다.
+      </p>
+      <select id="day">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <button id="dayButton">요일</button>
+      <output id="dayOut" class="out"></output>
+    </section>
+    <section>
+      <h2>4. 복리·Math.pow·toFixed</h2>
+      <p>
+        <code>Math.pow(base, exponent)</code>
+        는 거듭제곱,
+        <code>number.toFixed(2)</code>
+        는 소수점 둘째 자리까지 문자열로 만든다.
+      </p>
+      <label>
+        원금
+        <input id="principal" type="number" value="1000">
+      </label>
+      <label>
+        이율
+        <input id="rate" type="number" value="5">
+        %
+      </label>
+      <button id="interestButton">10년 표 만들기</button>
+      <div id="interestOut" class="out"></div>
+    </section>
+    <section>
+      <h2>5. break와 continue</h2>
+      <p>
+        <code>break</code>
+        는 반복을 즉시 끝내고,
+        <code>continue</code>
+        는 현재 회차의 나머지만 건너뛴다.
+      </p>
+      <button id="flowButton">1~10에서 5 건너뛰고 9에서 종료</button>
+      <output id="flowOut" class="out"></output>
+    </section>
+    <section>
+      <h2>6. 중첩 반복</h2>
+      <p>반복문 안에 반복문을 넣어 행과 열을 만든다.</p>
+      <button id="gridButton">5×5 좌표 만들기</button>
+      <output id="gridOut" class="out"></output>
+    </section>
     <script>
-      let counter = 1;
-      while (counter <= 7) {
-        document.writeln(
-          "<p style='font-size: " +
-            counter +
-            "ex'>HTML5 font size " +
-            counter +
-            "ex</p>",
-        );
-        ++counter;
-      }
-    </script>
-    <h2>3. for Repetition Statement</h2>
-    <p>
-      initialization: control variable의 초기값 설정<br />
-      condition: 반복을 계속할 조건<br />
-      increment expression: 한 번 반복한 뒤 control variable 변경
-    </p>
-    <script>
-      for (let count = 1; count <= 7; ++count) {
-        document.writeln("<p>for count: " + count + "</p>");
-      }
-    </script>
-    <h2>4. for 활용</h2>
-    <script>
-      let sum = 0;
-      for (let number = 2; number <= 100; number += 2) {
-        sum += number;
-      }
-      document.writeln("<p>2~100 짝수 합: " + sum + "</p>");
-    </script>
-    <h2>5. switch Multiple-Selection</h2>
-    <script>
-      let choice = window.prompt("1, 2, 3 중 선택하세요");
-      switch (choice) {
-        case "1":
-          document.writeln("<p>Numbered List</p>");
-          break;
-        case "2":
-          document.writeln("<p>Lettered List</p>");
-          break;
-        case "3":
-          document.writeln("<p>Roman Numbered List</p>");
-          break;
-        default:
-          document.writeln("<p>Invalid choice</p>");
-      }
-    </script>
-    <h2>6. do...while</h2>
-    <script>
-      let counter2 = 1;
-      do {
-        document.writeln("<p>count: " + counter2 + "</p>");
-        ++counter2;
-      } while (counter2 <= 6);
-    </script>
-    <h2>7. break / continue</h2>
-    <script>
-      for (let i = 1; i <= 10; ++i) {
-        if (i == 5) {
-          break;
+      document.getElementById("loopButton").addEventListener("click",function() {
+        let a=[],i=1;
+        while(i<=3) {
+          a.push(i++);
         }
-        document.writeln(i + " ");
-      }
-      document.writeln("<br />");
-      for (let i = 1; i <= 10; ++i) {
-        if (i == 5) {
-          continue;
+        let b=[],j=1;
+        do {
+          b.push(j++);
         }
-        document.writeln(i + " ");
-      }
-    </script>
-    <h2>8. Logical Operators</h2>
-    <script>
-      let age = 20;
-      let hasTicket = true;
-      if (age >= 18 && hasTicket) {
-        document.writeln("<p>입장 가능</p>");
-      }
-      if (age < 18 || !hasTicket) {
-        document.writeln("<p>입장 불가</p>");
-      }
+        while(j<=3);
+        let c=[];
+        for(let k=1;k<=3;k++)c.push(k);
+        document.getElementById("loopOut").textContent=`while: ${a.join(", ")}\ndo while: ${b.join(", ")}\nfor: ${c.join(", ")}`;
+      });
+      document.getElementById("sumButton").addEventListener("click",function() {
+        let limit=Number(document.getElementById("sumLimit").value);
+        let sum=0;
+        for(let n=2;n<=limit;n+=2)sum+=n;
+        document.getElementById("sumOut").textContent=`2부터 ${limit}까지 짝수 합 = ${sum}`;
+      });
+      document.getElementById("dayButton").addEventListener("click",function() {
+        let value=Number(document.getElementById("day").value);
+        let name;
+        switch(value) {
+          case 1:name="월요일";
+          break;
+          case 2:name="화요일";
+          break;
+          case 3:name="수요일";
+          break;
+          case 4:name="목요일";
+          break;
+          case 5:name="금요일";
+          break;
+          case 6:name="토요일";
+          break;
+          case 7:name="일요일";
+          break;
+          default:name="잘못된 값";
+        }
+        document.getElementById("dayOut").textContent=name;
+      });
+      document.getElementById("interestButton").addEventListener("click",function() {
+        let principal=Number(document.getElementById("principal").value);
+        let rate=Number(document.getElementById("rate").value)/100;
+        let html="<table><thead><tr><th>연도</th><th>금액</th></tr></thead><tbody>";
+        for(let year=1;year<=10;year++) {
+          let amount=principal*Math.pow(1+rate,year);
+          html+=`<tr><td>${year}</td><td>${amount.toFixed(2)}</td></tr>`;
+        }
+        document.getElementById("interestOut").innerHTML=html+"</tbody></table>";
+      });
+      document.getElementById("flowButton").addEventListener("click",function() {
+        let result=[];
+        for(let i=1;i<=10;i++) {
+          if(i===5)continue;
+          if(i===9)break;
+          result.push(i);
+        }
+        document.getElementById("flowOut").textContent=result.join(" ");
+      });
+      document.getElementById("gridButton").addEventListener("click",function() {
+        let rows=[];
+        for(let row=1;row<=5;row++) {
+          let cells=[];
+          for(let column=1;column<=5;column++)cells.push(`(${row},${column})`);
+          rows.push(cells.join(" "));
+        }
+        document.getElementById("gridOut").textContent=rows.join("\n");
+      });
     </script>
   </body>
 </html>

@@ -1,186 +1,227 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>JavaScript-5</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-5 정리</title>
     <style>
       body {
-        font-family: sans-serif;
-        line-height: 1.5;
-        padding-bottom: 100px;
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code,pre {
+        background:#f2f2f2       ;
+      }
+      code {
+        padding:2px 5px       ;
+      }
+      pre {
+        padding:12px;
+        overflow:auto       ;
+      }
+      input,button {
+        font:inherit;
+        padding:6px       ;
+      }
+      .out {
+        display:block;
+        margin-top:10px;
+        min-height:1.7em;
+        white-space:pre-wrap       ;
+      }
+      table {
+        border-collapse:collapse       ;
+      }
+      th,td {
+        border:1px solid black;
+        padding:7px;
+        text-align:center       ;
       }
     </style>
   </head>
   <body>
-    <h1>JavaScript-5 정리</h1>
-    <h2>1. Array 기본</h2>
-    <p>
-      array: 관련된 여러 데이터를 하나의 이름으로 저장하는 구조<br />
-      element: 배열의 각 값<br />
-      index: element의 위치 번호, 0부터 시작<br />
-      length: 배열의 element 개수
-    </p>
+    <header>
+      <h1>JavaScript-5 정리</h1>
+      <p>배열 생성 → index·length → 순회·카운터 → 함수 전달 → join·sort·검색 → 2차원 배열</p>
+    </header>
+    <section>
+      <h2>1. 배열 생성과 동적 크기</h2>
+      <p>
+        <code>new Array(3)</code>
+        은 값 없이 길이만 3인 배열을 만든다.
+        <code>["apple", "banana", "orange"]</code>
+        는 값과 길이를 함께 정한다. JavaScript 배열은 실행 중 추가·삭제되어 크기가 바뀔 수 있다.
+      </p>
+      <button id="createButton">두 배열 비교</button>
+      <output id="createOut" class="out"></output>
+    </section>
+    <section>
+      <h2>2. index와 length</h2>
+      <p>
+        index는 0부터 시작한다. 마지막 요소는
+        <code>array[array.length - 1]</code>
+        이다. 대입으로 값을 바꾸고
+        <code>push</code>
+        /
+        <code>pop</code>
+        으로 끝에 추가·삭제할 수 있다.
+      </p>
+      <input id="fruitInput" value="grape">
+      <button id="pushButton">push</button>
+      <button id="popButton">pop</button>
+      <output id="fruitOut" class="out"></output>
+    </section>
+    <section>
+      <h2>3. 배열 순회와 합계</h2>
+      <p>
+        index가 필요하면
+        <code>for</code>
+        , 값만 필요하면
+        <code>for...of</code>
+        가 알맞다. 배열 index 순회에
+        <code>for...in</code>
+        은 보통 사용하지 않는다.
+      </p>
+      <button id="sumButton">합계 계산</button>
+      <output id="sumOut" class="out"></output>
+    </section>
+    <section>
+      <h2>4. 빈도 카운터</h2>
+      <p>
+        주사위 눈을 배열 index로 사용하면 여러 개의 개별 변수나 긴
+        <code>switch</code>
+        없이 횟수를 셀 수 있다.
+      </p>
+      <button id="diceButton">주사위 6000번</button>
+      <output id="diceOut" class="out"></output>
+    </section>
+    <section>
+      <h2>5. 배열에서 임의 요소 선택</h2>
+      <p>
+        <code>Math.floor(Math.random() * array.length)</code>
+        로 유효한 임의 index를 만든다. 선택 결과는
+        <code>setAttribute</code>
+        로 접근성 속성에도 반영한다.
+      </p>
+      <button id="pickButton">임의 아이콘</button>
+      <span id="pickedIcon" role="img" aria-label="선택 전" style="font-size:2rem">❔</span>
+      <output id="pickOut" class="out"></output>
+    </section>
+    <section>
+      <h2>6. 함수에 배열 전달</h2>
+      <p>배열을 함수에 전달하면 같은 배열 객체를 참조한다. 함수에서 요소를 바꾸면 원본도 바뀐다. 숫자 하나를 전달하면 그 값의 복사본을 받는다.</p>
+      <button id="passButton">배열/요소 전달 비교</button>
+      <output id="passOut" class="out"></output>
+    </section>
+    <section>
+      <h2>7. join·sort·indexOf·lastIndexOf</h2>
+      <p>
+        <code>join</code>
+        은 문자열 결합,
+        <code>sort</code>
+        는 정렬이다. 숫자 정렬에는 비교 함수
+        <code>(a, b) =&gt; a - b</code>
+        가 필요하다. 검색 실패 시 index method는
+        <code>-1</code>
+        을 반환한다.
+      </p>
+      <input id="searchValue" type="number" value="10">
+      <button id="methodButton">method 실행</button>
+      <output id="methodOut" class="out"></output>
+    </section>
+    <section>
+      <h2>8. 2차원 배열</h2>
+      <p>
+        배열 안의 배열로 표를 표현한다.
+        <code>matrix[row][column]</code>
+        처럼 접근하고 중첩 반복으로 순회한다.
+      </p>
+      <button id="matrixButton">성적표 출력</button>
+      <div id="matrixOut" class="out"></div>
+    </section>
     <script>
-      let fruits = ["apple", "banana", "orange"];
-      document.writeln("<p>fruits[0]: " + fruits[0] + "</p>");
-      document.writeln("<p>fruits.length: " + fruits.length + "</p>");
-      fruits[1] = "grape";
-      document.writeln("<p>변경 후 fruits[1]: " + fruits[1] + "</p>");
-    </script>
-    <h2>2. new Array / Dynamic Array</h2>
-    <p>
-      new Array(n): 길이가 n인 Array 객체 생성<br />
-      JavaScript 배열은 생성 후에도 크기가 변할 수 있음<br />
-      기존 범위 밖 index에 값을 넣으면 배열의 length가 늘어남
-    </p>
-    <script>
-      let numbers1 = new Array(5);
-      for (let i = 0; i < numbers1.length; ++i) {
-        numbers1[i] = i;
+      let fruits=["apple","banana","orange"];
+      function showFruits() {
+        document.getElementById("fruitOut").textContent=`[${fruits.join(", ")}], length = ${fruits.length}, 마지막 = ${fruits[fruits.length-1]??"없음"}`;
       }
-      let dynamicArray = new Array(3);
-      dynamicArray[5] = 99;
-      document.writeln("<p>numbers1: " + numbers1.join(", ") + "</p>");
-      document.writeln(
-        "<p>dynamicArray.length: " + dynamicArray.length + "</p>",
-      );
-    </script>
-    <h2>3. Initializer List</h2>
-    <p>
-      [] 안에 값을 쉼표로 나열하여 생성 가능<br />
-      initializer의 값 개수가 배열의 length가 됨
-    </p>
-    <script>
-      let colors = ["cyan", "magenta", "yellow", "black"];
-      let integers = [2, 4, 6, 8];
-      document.writeln("<p>colors: " + colors.join(", ") + "</p>");
-      document.writeln("<p>integers.length: " + integers.length + "</p>");
-    </script>
-    <h2>4. Array 순회와 합계</h2>
-    <p>
-      일반 for: index를 0부터 length - 1까지 직접 사용<br />
-      for...in: 배열의 index를 순회
-    </p>
-    <script>
-      let values = [1, 2, 3, 4, 5];
-      let total1 = 0;
-      for (let i = 0; i < values.length; ++i) {
-        total1 += values[i];
-      }
-      let total2 = 0;
-      for (let index in values) {
-        total2 += values[index];
-      }
-      document.writeln("<p>for 합계: " + total1 + "</p>");
-      document.writeln("<p>for...in 합계: " + total2 + "</p>");
-    </script>
-    <h2>5. Array Element를 Counter로 사용</h2>
-    <p>각 index를 특정 경우의 횟수와 연결하면 frequency counter로 사용 가능</p>
-    <script>
-      let frequency = [0, 0, 0, 0, 0, 0];
-      for (let roll = 0; roll < 100; ++roll) {
-        let face = Math.floor(1 + Math.random() * 6);
-        ++frequency[face - 1];
-      }
-      document.writeln("<p>주사위 1~6 빈도: " + frequency.join(", ") + "</p>");
-    </script>
-    <h2>6. Array로 값 목록 관리</h2>
-    <p>
-      파일명이나 설명처럼 서로 대응하는 값을 배열에 저장하고 random index로 선택
-      가능
-    </p>
-    <script>
-      let pictures = ["cat.png", "dog.png", "bird.png"];
-      let descriptions = ["고양이", "강아지", "새"];
-      let randomIndex = Math.floor(Math.random() * pictures.length);
-      document.writeln(
-        "<p>선택: " +
-          pictures[randomIndex] +
-          " / " +
-          descriptions[randomIndex] +
-          "</p>",
-      );
-    </script>
-    <h2>7. Array와 Function</h2>
-    <p>
-      PPT 표현: 배열 전체는 reference로 함수에 전달되어 함수에서 원본 배열을
-      변경할 수 있음<br />
-      숫자·boolean 같은 개별 element는 value로 전달
-    </p>
-    <script>
-      function changeArray(array) {
-        array[0] = 999;
-      }
-      function changeElement(value) {
-        value = 777;
-      }
-      let sample = [10, 20, 30];
-      changeArray(sample);
-      let element = sample[1];
-      changeElement(element);
-      document.writeln("<p>changeArray 후: " + sample.join(", ") + "</p>");
-      document.writeln("<p>changeElement 후 element: " + element + "</p>");
-    </script>
-    <h2>8. join()</h2>
-    <p>
-      join(separator): 배열 element들을 지정한 separator로 연결한 문자열 반환
-    </p>
-    <script>
-      let languages = ["HTML", "CSS", "JavaScript"];
-      document.writeln("<p>" + languages.join(" / ") + "</p>");
-    </script>
-    <h2>9. sort()</h2>
-    <p>
-      sort(): 배열 정렬<br />
-      argument가 없으면 문자열 비교 방식으로 정렬<br />
-      숫자 정렬은 비교 함수를 전달하는 것이 중요
-    </p>
-    <script>
-      function compareIntegers(value1, value2) {
-        return parseInt(value1) - parseInt(value2);
-      }
-      let sortNumbers = [10, 1, 9, 2, 8, 3, 7, 4, 6, 5];
-      document.writeln("<p>정렬 전: " + sortNumbers.join(" ") + "</p>");
-      sortNumbers.sort(compareIntegers);
-      document.writeln("<p>숫자 오름차순: " + sortNumbers.join(" ") + "</p>");
-    </script>
-    <h2>10. indexOf() / lastIndexOf()</h2>
-    <p>
-      indexOf(value): 앞에서부터 첫 번째 위치 검색<br />
-      lastIndexOf(value): 뒤쪽의 마지막 위치 검색<br />
-      찾지 못하면 -1 반환<br />
-      두 번째 argument로 검색을 시작할 index 지정 가능
-    </p>
-    <script>
-      let searchArray = [10, 20, 30, 20, 40];
-      document.writeln("<p>indexOf(20): " + searchArray.indexOf(20) + "</p>");
-      document.writeln(
-        "<p>lastIndexOf(20): " + searchArray.lastIndexOf(20) + "</p>",
-      );
-      document.writeln("<p>indexOf(99): " + searchArray.indexOf(99) + "</p>");
-      document.writeln(
-        "<p>indexOf(20, 2): " + searchArray.indexOf(20, 2) + "</p>",
-      );
-    </script>
-    <h2>11. Multidimensional Array</h2>
-    <p>
-      2차원 배열은 배열 안에 배열을 저장하는 형태<br />
-      접근: array[row][column]<br />
-      각 row의 길이는 서로 달라도 됨
-    </p>
-    <script>
-      let matrix = [
-        [1, 2, 3],
-        [4, 5, 6],
-      ];
-      document.writeln("<p>matrix[1][2]: " + matrix[1][2] + "</p>");
-      let matrixTotal = 0;
-      for (let row = 0; row < matrix.length; ++row) {
-        for (let column = 0; column < matrix[row].length; ++column) {
-          matrixTotal += matrix[row][column];
+      document.getElementById("createButton").addEventListener("click",function() {
+        let emptySlots=new Array(3);
+        let initialized=["apple","banana","orange"];
+        document.getElementById("createOut").textContent=`new Array(3): length=${emptySlots.length}, 0번 값=${emptySlots[0]}\n초기화 목록: [${initialized.join(", ")}]`;
+      });
+      document.getElementById("pushButton").addEventListener("click",function() {
+        let value=document.getElementById("fruitInput").value.trim();
+        if(value)fruits.push(value);
+        showFruits();
+      });
+      document.getElementById("popButton").addEventListener("click",function() {
+        fruits.pop();
+        showFruits();
+      });
+      showFruits();
+      document.getElementById("sumButton").addEventListener("click",function() {
+        let numbers=[10,20,30,40];
+        let total=0;
+        for(let number of numbers)total+=number;
+        document.getElementById("sumOut").textContent=`${numbers.join(" + ")} = ${total}`;
+      });
+      document.getElementById("diceButton").addEventListener("click",function() {
+        let frequency=new Array(7).fill(0);
+        for(let roll=0;roll<6000;roll++) {
+          let face=Math.floor(1+Math.random()*6);
+          frequency[face]++;
         }
+        let lines=[];
+        for(let face=1;face<=6;face++)lines.push(`${face}: ${frequency[face]}회 (${(frequency[face]/6000*100).toFixed(2)}%)`);
+        document.getElementById("diceOut").textContent=lines.join("\n");
+      });
+      document.getElementById("pickButton").addEventListener("click",function() {
+        let icons=["🚀","🎨","🎵","📚","⚽"];
+        let index=Math.floor(Math.random()*icons.length);
+        let icon=document.getElementById("pickedIcon");
+        icon.textContent=icons[index];
+        icon.setAttribute("aria-label",`선택된 아이콘 ${icons[index]}`);
+        document.getElementById("pickOut").textContent=`index ${index} / length ${icons.length}`;
+      });
+      function doubleArray(values) {
+        for(let i=0;i<values.length;i++)values[i]*=2;
       }
-      document.writeln("<p>2차원 배열 전체 합: " + matrixTotal + "</p>");
+      function doubleElement(value) {
+        value*=2;
+        return value;
+      }
+      document.getElementById("passButton").addEventListener("click",function() {
+        let values=[1,2,3];
+        let before=values.join(", ");
+        doubleArray(values);
+        let element=values[0];
+        let returned=doubleElement(element);
+        document.getElementById("passOut").textContent=`배열: [${before}] → [${values.join(", ")}]\n요소: 원본 ${element}, 함수 반환값 ${returned}`;
+      });
+      document.getElementById("methodButton").addEventListener("click",function() {
+        let values=[10,2,30,10,4];
+        let key=Number(document.getElementById("searchValue").value);
+        let lexical=[...values].sort();
+        let numeric=[...values].sort((a,b)=>a-b);
+        document.getElementById("methodOut").textContent=`join(" | "): ${values.join(" | ")}\n기본 sort: ${lexical.join(", ")}\n숫자 sort: ${numeric.join(", ")}\nindexOf(${key}): ${values.indexOf(key)}\nlastIndexOf(${key}): ${values.lastIndexOf(key)}`;
+      });
+      document.getElementById("matrixButton").addEventListener("click",function() {
+        let matrix=[["이름","HTML","JS"],["민수",85,90],["지영",95,88]];
+        let html="<table>";
+        for(let row=0;row<matrix.length;row++) {
+          html+="<tr>";
+          for(let column=0;column<matrix[row].length;column++) {
+            let tag=row===0?"th":"td";
+            html+=`<${tag}>${matrix[row][column]}</${tag}>`;
+          }
+          html+="</tr>";
+        }
+        document.getElementById("matrixOut").innerHTML=html+"</table>";
+      });
     </script>
   </body>
 </html>

@@ -1,119 +1,154 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>JavaScript-1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-1 정리</title>
+    <style>
+      body {
+        font-family:Arial,sans-serif;
+        margin:40px;
+        line-height:1.6       ;
+      }
+      section {
+        margin-bottom:35px       ;
+      }
+      code,pre {
+        background:#f2f2f2       ;
+      }
+      code {
+        padding:2px 5px       ;
+      }
+      pre {
+        padding:12px;
+        overflow:auto       ;
+      }
+      input,button {
+        font:inherit;
+        padding:6px       ;
+      }
+      .out {
+        display:block;
+        min-height:1.7em;
+        margin-top:10px;
+        white-space:pre-wrap       ;
+      }
+    </style>
   </head>
   <body>
-    <h1>JavaScript-1 정리</h1>
-    <h2>1. First Script</h2>
-    <p>
-      script: JavaScript 코드 영역<br />
-      document: 현재 HTML 문서 객체<br />
-      writeln(): HTML 문서에 내용 출력
-    </p>
+    <header>
+      <h1>JavaScript-1 정리</h1>
+      <p>스크립트 → 출력 → 변수·자료형 → 입력·변환 → 연산자 → 조건문</p>
+    </header>
+    <section>
+      <h2>1. script와 출력</h2>
+      <p>
+        JavaScript는
+        <code>&lt;script&gt;</code>
+        내부 또는
+        <code>src</code>
+        로 연결한 외부 파일에 작성한다. 주석은
+        <code>//</code>
+        ,
+        <code>/* ... */</code>
+        다. 예제 원본의
+        <code>document.write()</code>
+        는 로딩 후 문서를 지울 수 있어 여기서는 DOM 출력을 사용한다.
+      </p>
+      <button id="helloButton">문장 출력</button>
+      <output id="helloOut" class="out">버튼을 누르세요.</output>
+    </section>
+    <section>
+      <h2>2. 변수·상수·자료형</h2>
+      <p>
+        <code>let</code>
+        은 재할당 가능,
+        <code>const</code>
+        는 재할당 불가다. 주요 자료형은 string, number, boolean, undefined, null, object다.
+      </p>
+      <pre><code>let score = 80;
+      score = 90;
+      const course = "Web";</code></pre>
+      <button id="typeButton">typeof 실행</button>
+      <output id="typeOut" class="out"></output>
+    </section>
+    <section>
+      <h2>3. 입력·문자열·숫자 변환</h2>
+      <p>
+        <code>input.value</code>
+        는 문자열이다. 정수는
+        <code>parseInt</code>
+        , 실수는
+        <code>parseFloat</code>
+        또는
+        <code>Number</code>
+        로 변환한다.
+      </p>
+      <input id="number1" value="12" inputmode="decimal">
+      +
+      <input id="number2" value="7" inputmode="decimal">
+      <button id="addButton">더하기</button>
+      <output id="addOut" class="out"></output>
+    </section>
+    <section>
+      <h2>4. 산술·대입·비교 연산자</h2>
+      <p>
+        산술
+        <code>+ - * / % **</code>
+        , 대입
+        <code>= += -= *= /=</code>
+        , 비교
+        <code>=== !== &lt; &gt; &lt;= &gt;=</code>
+        를 사용한다. 문자열 결합에도
+        <code>+</code>
+        가 쓰이므로 숫자 변환이 중요하다.
+      </p>
+      <input id="checkValue" type="number" value="75">
+      <button id="checkButton">60점 이상인지 확인</button>
+      <output id="checkOut" class="out"></output>
+    </section>
+    <section>
+      <h2>5. if / else와 시간</h2>
+      <p>
+        조건식이 참이면
+        <code>if</code>
+        , 거짓이면
+        <code>else</code>
+        블록을 실행한다.
+        <code>new Date().getHours()</code>
+        는 현재 시각의 시간을 반환한다.
+      </p>
+      <button id="greetButton">현재 시간 인사</button>
+      <output id="greetOut" class="out"></output>
+    </section>
     <script>
-      document.writeln("<p>Hello JavaScript!</p>");
-    </script>
-    <h2>2. write / 문자열 연결 / alert</h2>
-    <p>
-      write(): HTML 문서에 출력<br />
-      + : 문자열 연결<br />
-      alert(): 팝업 출력<br />
-      \n : 문자열 안 줄바꿈<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        document.write("<h1 style='color: magenta'>");
-        document.write("Welcome to JavaScript " + "Programming!</h1>");
-        window.alert("HTML\nCSS\nJavaScript");
-      }
-    </script>
-    <h2>3. prompt / 변수</h2>
-    <p>
-      let: 변수 선언<br />
-      prompt(): 사용자 입력<br />
-      = : 오른쪽 값을 왼쪽 변수에 대입<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let userName;
-        userName = window.prompt("Please enter your name");
-        document.writeln(
-          "<h1>Hello " + userName + ", welcome to JavaScript programming!</h1>",
-        );
-      }
-    </script>
-    <h2>4. Adding Integers</h2>
-    <p>
-      prompt()의 입력값은 문자열<br />
-      parseInt(): 문자열을 정수로 변환<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let firstNumber;
-        let secondNumber;
-        let number1;
-        let number2;
-        let sum;
-        firstNumber = window.prompt("첫 번째 정수를 입력하세요");
-        secondNumber = window.prompt("두 번째 정수를 입력하세요");
-        number1 = parseInt(firstNumber);
-        number2 = parseInt(secondNumber);
-        sum = number1 + number2;
-        document.writeln("<h1>The sum is " + sum + "</h1>");
-      }
-    </script>
-    <h2>5. Arithmetic</h2>
-    <p>
-      + : 덧셈<br />
-      - : 뺄셈<br />
-      * : 곱셈<br />
-      / : 나눗셈<br />
-      % : 나머지
-    </p>
-    <script>
-      {
-        let a = 10;
-        let b = 3;
-        document.writeln("<p>a + b = " + (a + b) + "</p>");
-        document.writeln("<p>a - b = " + (a - b) + "</p>");
-        document.writeln("<p>a * b = " + a * b + "</p>");
-        document.writeln("<p>a / b = " + a / b + "</p>");
-        document.writeln("<p>a % b = " + (a % b) + "</p>");
-      }
-    </script>
-    <h2>6. Decision Making</h2>
-    <p>
-      if: 조건이 true일 때 실행<br />
-      == : 같은지 비교<br />
-      != : 같지 않은지 비교<br />
-      &gt;, &lt;, &gt;=, &lt;= : 크기 비교<br />
-      아래 실습은 false를 true로 변경하면 실행
-    </p>
-    <script>
-      if (false) {
-        let name;
-        let now = new Date();
-        let hour = now.getHours();
-        name = window.prompt("이름을 입력하세요");
-        if (hour < 12) {
-          document.write("<h1>Good Morning, ");
+      document.getElementById("helloButton").addEventListener("click", function () {
+        document.getElementById("helloOut").textContent = "Welcome to JavaScript!";
+      });
+      document.getElementById("typeButton").addEventListener("click", function () {
+        let values = ["hello", 42, true, undefined, null, {
+          name:"Web"
         }
-        if (hour >= 12) {
-          hour = hour - 12;
-          if (hour < 6) {
-            document.write("<h1>Good Afternoon, ");
-          }
-          if (hour >= 6) {
-            document.write("<h1>Good Evening, ");
-          }
-        }
-        document.writeln(name + ", welcome to JavaScript programming!</h1>");
-      }
+        ];
+        document.getElementById("typeOut").textContent = values.map(value => `${String(value)} → ${typeof value}`).join("\n") + "\n※ typeof null은 역사적 이유로 object";
+      });
+      document.getElementById("addButton").addEventListener("click", function () {
+        let a = Number(document.getElementById("number1").value);
+        let b = Number(document.getElementById("number2").value);
+        document.getElementById("addOut").textContent = Number.isNaN(a + b) ? "숫자를 입력하세요." : `${a} + ${b} = ${a + b}`;
+      });
+      document.getElementById("checkButton").addEventListener("click", function () {
+        let score = Number(document.getElementById("checkValue").value);
+        document.getElementById("checkOut").textContent = score >= 60 ? "합격" : "불합격";
+      });
+      document.getElementById("greetButton").addEventListener("click", function () {
+        let hour = new Date().getHours();
+        let greeting;
+        if (hour < 12) greeting = "좋은 아침입니다.";
+        else if (hour < 18) greeting = "좋은 오후입니다.";
+        else greeting = "좋은 저녁입니다.";
+        document.getElementById("greetOut").textContent = `${hour}시: ${greeting}`;
+      });
     </script>
   </body>
 </html>
